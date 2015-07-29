@@ -8,9 +8,9 @@
 
 <?php get_template_part('template_parts/content', 'analyze'); ?>
 
-<?php get_template_part('template_parts/content', 'goals'); ?>
-
 <?php get_template_part('template_parts/content', 'budgets'); ?>
+
+<?php get_template_part('template_parts/content', 'goals'); ?>
 
 <?php get_template_part('template_parts/content', 'platforms'); ?>
 
