@@ -32,8 +32,9 @@ if (!function_exists('misFinanzas_setup')) {
       add_theme_support('post-thumbnails');
     }
 
-    register_nav_menu('main-menu',__( 'Menú Principal' ));
-    register_nav_menu('footer-menu',__( 'Menú de Pie de Página' ));
+    register_nav_menu('menu_uno',__( 'Principal' ));
+    register_nav_menu('menu_dos',__( 'Responsive' ));
+    register_nav_menu('menu_tres',__( 'Pie de Sitio' ));
   }
 }
 
