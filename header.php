@@ -15,13 +15,13 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
             <nav id="main-menu" class="clearfix hide-xs">
-              <ul class="main-menu list-unstyled clearfix">
-                <li class="active"><a href="">inicio</a></li>
-                <li><a href="">iniciar sesión</a></li>
-              </ul>
-              <a href="" class="my-btn btn-1">REGISTRATE</a>
+              <?php wp_nav_menu(array('menu' => 'Principal', 'container' => false, 'depth' => 1, 'menu_class' => 'main-menu list-unstyled clearfix')); ?>
+              
+              <?php if(ot_get_option('link_de_registro')): ?>
+              <a href="<?php echo ot_get_option('link_de_registro'); ?>" class="my-btn btn-1" target="_blank">REGÍSTRATE</a>
+              <?php endif; ?>
             </nav>
             <div class="toggler-wrapper show-xs">
               <span class="toggler collapsed" data-toggle="collapse" data-target="#nav-mobile">Toggler</span>
@@ -32,9 +32,5 @@
     </div>
   </section>
   <nav id="nav-mobile" class="collapse">
-    <ul class="list-unstyled">
-      <li class="active"><a href="">inicio</a></li>
-      <li><a href="">iniciar sesión</a></li>
-      <li><a href="">Registrate</a></li>
-    </ul>
+    <?php wp_nav_menu(array('menu' => 'Responsive', 'container' => false, 'depth' => 1, 'menu_class' => 'list-unstyled')); ?>
   </nav>

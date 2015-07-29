@@ -5,15 +5,21 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h3>Comienza a organizar <br/>tus finanzas hoy</h3>
+        <?php if(ot_get_option('texto_principal')): ?>
+        <h3><?php echo ot_get_option('texto_principal'); ?></h3>
+        <?php endif; ?>
 
+        <?php if(ot_get_option('link_de_registro')): ?>
         <div class="hide-xs">
-          <a href="" class="my-btn btn-1">¡registrate Ahora!</a>
+          <a href="<?php echo ot_get_option('link_de_registro'); ?>" class="my-btn btn-1" target="_blank">¡registrate Ahora!</a>
         </div>
+        <?php endif; ?>
 
+        <?php if(ot_get_option('link_descargar_app')): ?>
         <div class="show-xs">
-          <a href="" class="my-btn btn-1">Descarga el app</a>
+          <a href="<?php echo ot_get_option('link_descargar_app'); ?>" class="my-btn btn-1" target="_blank">Descarga el App</a>
         </div>
+        <?php endif; ?>  
 
         <p class="quotes-1"><span><span>¡Es gratis!</span></span></p>
       </div>

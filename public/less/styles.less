@@ -649,7 +649,7 @@ Nav Styles
       }
     }
 
-    &.active {
+    &.current-menu-item {
       a {
         .border-top(8px, @green-1);
 
@@ -690,7 +690,7 @@ Nav Styles
         }
       }
 
-      &.active {
+      &.current-menu-item {
         a {
           background-color: @red-1;
           color: white;
@@ -783,6 +783,8 @@ Home Header Styles
     transform: translate3d(100px, 0px, 0px);
     position: absolute;
     bottom: 0;
+    height: auto;
+    width: auto;
 
     @media @medium {
       right: -45px;
