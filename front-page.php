@@ -4,6 +4,8 @@
 
 <?php get_template_part('template_parts/content', 'features'); ?>
 
+<?php get_template_part('template_parts/content', 'features-mobile'); ?>
+
 <?php get_template_part('template_parts/content', 'small-features'); ?>
 
 <?php get_template_part('template_parts/content', 'analyze'); ?>

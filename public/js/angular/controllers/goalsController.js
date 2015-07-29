@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('misFinanzas.controllers').controller('GoalsController', ['$scope', '$interval', function ($scope, $interval) {
+controllers.controller('GoalsController', ['$scope', '$interval', function ($scope, $interval) {
+
   $scope.isShown = false;
 
   $scope.vacationsMax = 500;

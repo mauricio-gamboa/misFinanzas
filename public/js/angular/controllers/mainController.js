@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('misFinanzas.controllers').controller('MainController', ['$scope', function ($scope) {
+controllers.controller('MainController', ['$scope', function ($scope) {
   $scope.isShowThem = false;
 
   $scope.showThem = function (inView) {

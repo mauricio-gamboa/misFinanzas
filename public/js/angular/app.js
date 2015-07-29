@@ -1,6 +1,7 @@
 'use strict';
 
 var misFinanzas = angular.module('misFinanzas', [
+  'ngSanitize',
   'ngAnimate',
   'angular-inview',
   'angular-svg-round-progress',
@@ -11,9 +12,13 @@ var misFinanzas = angular.module('misFinanzas', [
   'misFinanzas.filters'
 ]);
 
-angular.module('misFinanzas.controllers', []);
+misFinanzas.run(['$rootScope', function ($rootScope) {
+  $rootScope.api = misFinanzasAPI.url;
+}]);
 
-angular.module('misFinanzas.services', []);
+var controllers = angular.module('misFinanzas.controllers', []);
+
+var services = angular.module('misFinanzas.services', []);
 
 angular.module('misFinanzas.directives', []);
 

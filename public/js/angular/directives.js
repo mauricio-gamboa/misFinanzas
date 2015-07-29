@@ -28,18 +28,19 @@ angular.module('misFinanzas.directives', [])
     };
   }])
 
-  .directive('owlSingleNav', ['$timeout', function ($timeout) {
+  .directive('owlSingleNav', [function () {
     return {
       restrict: 'A',
 
-      link: function (scope, element) {
-
-        $timeout(function () {
-          element.owlCarousel({
-            autoPlay: true,
-            singleItem: true
-          });
-        }, 0);
+      link: function (scope, element, attr) {
+        scope.$watch(attr.isLoaded, function (newValue) {
+          if (newValue) {
+            element.owlCarousel({
+              autoPlay: true,
+              singleItem: true
+            });
+          }
+        });
       }
     };
   }])
