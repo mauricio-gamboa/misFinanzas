@@ -1,6 +1,7 @@
 <?php
 
 define('THEME_DIR', get_template_directory_uri());
+define('SITE_URL', get_bloginfo('wpurl'));
 
 function enqueue_styles() {
   // Load our main stylesheet.
@@ -19,8 +20,8 @@ add_action('wp_enqueue_scripts', 'enqueue_styles');
 function enqueue_scripts() {
   wp_register_script('libs', THEME_DIR . '/public/js/libs.min.js', array(), '1', true);
   wp_enqueue_script( 'libs' );
-
   wp_register_script('main', THEME_DIR . '/public/js/main.min.js', array('libs'), '1', true);
+  wp_localize_script('main', 'misFinanzasAPI', array('url' => SITE_URL . '/wp-json/posts'));
   wp_enqueue_script('main');
 }
 

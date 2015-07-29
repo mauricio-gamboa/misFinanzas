@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('misFinanzas.controllers').controller('BudgetsController', ['$scope', '$interval', function ($scope, $interval) {
+controllers.controller('BudgetsController', ['$scope', '$interval', function ($scope, $interval) {
 
   $scope.isShowThem = false;
 

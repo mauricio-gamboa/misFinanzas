@@ -32,6 +32,7 @@ module.exports = function (grunt) {
           'bower_components/OwlCarousel/owl-carousel/owl.carousel.js',
           'bower_components/bootstrap/dist/js/bootstrap.js',
           'bower_components/angular/angular.js',
+          'bower_components/angular-sanitize/angular-sanitize.js',
           'bower_components/angular-animate/angular-animate.js',
           'bower_components/angular-inview/angular-inview.js',
           'bower_components/angular-svg-round-progressbar/build/roundProgress.js',
@@ -94,5 +95,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'watch']);
+  grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
 };

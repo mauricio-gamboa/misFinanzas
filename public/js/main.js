@@ -1,6 +1,7 @@
 'use strict';
 
 var misFinanzas = angular.module('misFinanzas', [
+  'ngSanitize',
   'ngAnimate',
   'angular-inview',
   'angular-svg-round-progress',
@@ -11,60 +12,62 @@ var misFinanzas = angular.module('misFinanzas', [
   'misFinanzas.filters'
 ]);
 
-angular.module('misFinanzas.controllers', []);
+misFinanzas.run(['$rootScope', function ($rootScope) {
+  $rootScope.api = misFinanzasAPI.url;
+}]);
 
-angular.module('misFinanzas.services', []);
+var controllers = angular.module('misFinanzas.controllers', []);
+
+var services = angular.module('misFinanzas.services', []);
 
 angular.module('misFinanzas.directives', []);
 
 angular.module('misFinanzas.filters', []);;'use strict';
 
-angular.module('misFinanzas.controllers')
+controllers.controller('FeaturesSmallController', ['$scope', '$interval', function ($scope, $interval) {
+  $scope.isShown = false;
 
-  .controller('FeaturesSmallController', ['$scope', '$interval', function ($scope, $interval) {
-    $scope.isShown = false;
+  $scope.features = [];
 
-    $scope.features = [];
+  $scope.original = [
+    {
+      title: 'Mis Transacciones',
+      image: 'public/images/small-feature-1.png'
+    },
+    {
+      title: 'Mi Calendario',
+      image: 'public/images/small-feature-2.png'
+    },
+    {
+      title: 'Mi Análisis',
+      image: 'public/images/small-feature-3.png'
+    },
+    {
+      title: 'Mi Flujo de Efectivo',
+      image: 'public/images/small-feature-4.png'
+    },
+    {
+      title: 'Mi Presupuesto',
+      image: 'public/images/small-feature-5.png'
+    },
+    {
+      title: 'Mis Metas de Ahorro',
+      image: 'public/images/small-feature-6.png'
+    }
+  ];
 
-    $scope.original = [
-      {
-        title: 'Mis Transacciones',
-        image: 'public/images/small-feature-1.png'
-      },
-      {
-        title: 'Mi Calendario',
-        image: 'public/images/small-feature-2.png'
-      },
-      {
-        title: 'Mi Análisis',
-        image: 'public/images/small-feature-3.png'
-      },
-      {
-        title: 'Mi Flujo de Efectivo',
-        image: 'public/images/small-feature-4.png'
-      },
-      {
-        title: 'Mi Presupuesto',
-        image: 'public/images/small-feature-5.png'
-      },
-      {
-        title: 'Mis Metas de Ahorro',
-        image: 'public/images/small-feature-6.png'
-      }
-    ];
+  $scope.showThem = function (inview) {
+    if (inview && !$scope.isShown) {
+      $scope.isShown = true;
 
-    $scope.showThem = function (inview) {
-      if (inview && !$scope.isShown) {
-        $scope.isShown = true;
+      $interval(function (index) {
+        $scope.features.push($scope.original[index]);
+      }, 50, $scope.original.length);
+    }
+  };
+}]);;'use strict';
 
-        $interval(function (index) {
-          $scope.features.push($scope.original[index]);
-        }, 50, $scope.original.length);
-      }
-    };
-  }]);;'use strict';
-
-angular.module('misFinanzas.controllers').controller('BudgetsController', ['$scope', '$interval', function ($scope, $interval) {
+controllers.controller('BudgetsController', ['$scope', '$interval', function ($scope, $interval) {
 
   $scope.isShowThem = false;
 
@@ -111,75 +114,54 @@ angular.module('misFinanzas.controllers').controller('BudgetsController', ['$sco
   };
 }]);;'use strict';
 
-angular.module('misFinanzas.controllers')
+var FeaturesController = function ($interval, postsService) {
+  this.interval = $interval;
+  this.postsService = postsService;
+};
 
-  .controller('FeaturesController', ['$scope', '$interval', function ($scope, $interval) {
-    $scope.isShown = false;
+FeaturesController.prototype.showThem = function (inView) {
+  var _this = this;
 
-    $scope.features = [];
+  if (inView && !_this.isShown) {
+    _this.postsService.getFeatures().success(function (data) {
+      _this.features = data;
+      _this.isShown = true;
+      _this.dataLoaded = true;
+    });
+  }
+};
 
-    $scope.original = [
-      {
-        title: 'Maneja fácilmente tus finanzas',
-        image: 'public/images/feature-1.png',
-        content: 'Crea presupuestos y monitorea tus gastos por categoría. Podrás administrar fácilmente tus finanzas y alcanzar tus metas de ahorro.'
-      },
-      {
-        title: 'Elige tu moneda de análisis',
-        image: 'public/images/feature-2.png',
-        content: 'Elige la moneda en la cual deseas analizar tu información financiera. Adiós a los tipos de cambio, Mis Finanzas hace las conversiones por ti.'
-      },
-      {
-        title: 'Sincroniza Automáticamente tus productos BAC | Credomatic',
-        image: 'public/images/feature-3.png',
-        content: 'Sincroniza la información de todos tus productos BAC Credomatic. Dedicarás menos tiempo a actualizar datos y más a tomar mejores decisiones financieras.'
-      },
-      {
-        title: 'Obtén una visión completa de tus finanzas',
-        image: 'public/images/feature-4.png',
-        content: 'Agrega fácilmente tus cuentas y tarjetas de otras instituciones. Podrás consolidar toda tu información y visualizar tu panorama financiero completo.'
-      }
-    ];
+FeaturesController.$inject = ['$interval', 'postsService'];
 
-    $scope.showThem = function (inview) {
-      if (inview && !$scope.isShown) {
-        $scope.isShown = true;
+controllers.controller('FeaturesController', FeaturesController);;'use strict';
 
-        $interval(function (index) {
-          $scope.features.push($scope.original[index]);
-        }, 50, $scope.original.length);
-      }
-    };
-  }]);;'use strict';
+controllers.controller('FeaturesMobileController', ['$scope', function ($scope) {
+  $scope.features = [
+    {
+      title: 'Maneja fácilmente tus finanzas',
+      image: 'public/images/feature-1.png',
+      content: 'Crea presupuestos y monitorea tus gastos por categoría. Podrás administrar fácilmente tus finanzas y alcanzar tus metas de ahorro.'
+    },
+    {
+      title: 'Elige tu moneda de análisis',
+      image: 'public/images/feature-2.png',
+      content: 'Elige la moneda en la cual deseas analizar tu información financiera. Adiós a los tipos de cambio, Mis Finanzas hace las conversiones por ti.'
+    },
+    {
+      title: 'Sincroniza Automáticamente tus productos BAC | Credomatic',
+      image: 'public/images/feature-3.png',
+      content: 'Sincroniza la información de todos tus productos BAC Credomatic. Dedicarás menos tiempo a actualizar datos y más a tomar mejores decisiones financieras.'
+    },
+    {
+      title: 'Obtén una visión completa de tus finanzas',
+      image: 'public/images/feature-4.png',
+      content: 'Agrega fácilmente tus cuentas y tarjetas de otras instituciones. Podrás consolidar toda tu información y visualizar tu panorama financiero completo.'
+    }
+  ];
+}]);;'use strict';
 
-angular.module('misFinanzas.controllers')
+controllers.controller('GoalsController', ['$scope', '$interval', function ($scope, $interval) {
 
-  .controller('FeaturesMobileController', ['$scope', function ($scope) {
-    $scope.features = [
-      {
-        title: 'Maneja fácilmente tus finanzas',
-        image: 'public/images/feature-1.png',
-        content: 'Crea presupuestos y monitorea tus gastos por categoría. Podrás administrar fácilmente tus finanzas y alcanzar tus metas de ahorro.'
-      },
-      {
-        title: 'Elige tu moneda de análisis',
-        image: 'public/images/feature-2.png',
-        content: 'Elige la moneda en la cual deseas analizar tu información financiera. Adiós a los tipos de cambio, Mis Finanzas hace las conversiones por ti.'
-      },
-      {
-        title: 'Sincroniza Automáticamente tus productos BAC | Credomatic',
-        image: 'public/images/feature-3.png',
-        content: 'Sincroniza la información de todos tus productos BAC Credomatic. Dedicarás menos tiempo a actualizar datos y más a tomar mejores decisiones financieras.'
-      },
-      {
-        title: 'Obtén una visión completa de tus finanzas',
-        image: 'public/images/feature-4.png',
-        content: 'Agrega fácilmente tus cuentas y tarjetas de otras instituciones. Podrás consolidar toda tu información y visualizar tu panorama financiero completo.'
-      }
-    ];
-  }]);;'use strict';
-
-angular.module('misFinanzas.controllers').controller('GoalsController', ['$scope', '$interval', function ($scope, $interval) {
   $scope.isShown = false;
 
   $scope.vacationsMax = 500;
@@ -248,7 +230,7 @@ angular.module('misFinanzas.controllers').controller('GoalsController', ['$scope
 
 }]);;'use strict';
 
-angular.module('misFinanzas.controllers').controller('MainController', ['$scope', function ($scope) {
+controllers.controller('MainController', ['$scope', function ($scope) {
   $scope.isShowThem = false;
 
   $scope.showThem = function (inView) {
@@ -285,18 +267,19 @@ angular.module('misFinanzas.directives', [])
     };
   }])
 
-  .directive('owlSingleNav', ['$timeout', function ($timeout) {
+  .directive('owlSingleNav', [function () {
     return {
       restrict: 'A',
 
-      link: function (scope, element) {
-
-        $timeout(function () {
-          element.owlCarousel({
-            autoPlay: true,
-            singleItem: true
-          });
-        }, 0);
+      link: function (scope, element, attr) {
+        scope.$watch(attr.isLoaded, function (newValue) {
+          if (newValue) {
+            element.owlCarousel({
+              autoPlay: true,
+              singleItem: true
+            });
+          }
+        });
       }
     };
   }])
@@ -397,3 +380,15 @@ angular.module('misFinanzas.directives', [])
       }
     };
   }]);;'use strict';;'use strict';
+
+services.factory('postsService', ['$rootScope', '$http', function ($rootScope, $http) {
+  return {
+    getFeatures: function () {
+      return $http.get($rootScope.api, {
+        params: {
+          'type': 'caracteristica_p'
+        }
+      });
+    }
+  };
+}]);
