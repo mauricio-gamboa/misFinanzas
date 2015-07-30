@@ -54,45 +54,54 @@ Responsive
 .show-m,
 .show-xl {
   display: none;
+  visibility: hidden;
 }
 
 @media @large {
   .hide-xl {
     display: none !important;
+    visibility: hidden !important;
   }
 
   .show-xl {
     display: block;
+    visibility: visible;
   }
 }
 
 @media @medium {
   .hide-m {
     display: none !important;
+    visibility: hidden !important;
   }
 
   .show-m {
     display: block;
+    visibility: visible;
   }
 }
 
 @media @small {
   .hide-s {
     display: none !important;
+    visibility: hidden !important;
   }
 
   .show-s {
     display: block;
+    visibility: visible;
   }
 }
 
 @media @xs {
   .hide-xs {
     display: none !important;
+    visibility: hidden !important;
   }
 
   .show-xs {
     display: block;
+    visibility: visible;
   }
 }
 
@@ -1929,5 +1938,9 @@ Animations
 .fade-in {
   &.ng-enter {
     animation: fadeInDown 1s;
+  }
+
+  &.ng-leave {
+    animation: fadeOutUp 1s;
   }
 }

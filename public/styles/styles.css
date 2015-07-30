@@ -13,37 +13,46 @@ Responsive
 .show-m,
 .show-xl {
   display: none;
+  visibility: hidden;
 }
 @media (min-width: 1200px) {
   .hide-xl {
     display: none !important;
+    visibility: hidden !important;
   }
   .show-xl {
     display: block;
+    visibility: visible;
   }
 }
 @media (min-width: 993px) and (max-width: 1200px) {
   .hide-m {
     display: none !important;
+    visibility: hidden !important;
   }
   .show-m {
     display: block;
+    visibility: visible;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
   .hide-s {
     display: none !important;
+    visibility: hidden !important;
   }
   .show-s {
     display: block;
+    visibility: visible;
   }
 }
 @media (max-width: 767px) {
   .hide-xs {
     display: none !important;
+    visibility: hidden !important;
   }
   .show-xs {
     display: block;
+    visibility: visible;
   }
 }
 /***************************
@@ -1645,4 +1654,7 @@ Animations
 }
 .fade-in.ng-enter {
   animation: fadeInDown 1s;
+}
+.fade-in.ng-leave {
+  animation: fadeOutUp 1s;
 }
