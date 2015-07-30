@@ -217,6 +217,10 @@ General
 ****************************
 ***************************/
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 .font-settings {
   font-family: 'open_sansregular';
   font-size: 15px;
@@ -949,7 +953,6 @@ Features Styles
 #features-mobile {
   overflow: hidden;
   position: relative;
-  min-height: 590px;
 
   .lines {
     position: absolute;
@@ -1058,6 +1061,10 @@ Analyze Styles
 
     @media @xs {
       padding-top: 0;
+
+      br {
+        display: none;
+      }
     }
   }
 

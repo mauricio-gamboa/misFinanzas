@@ -129,6 +129,14 @@ Fonts
 General
 ****************************
 ***************************/
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
 .font-settings {
   font-family: 'open_sansregular';
   font-size: 15px;
@@ -770,7 +778,6 @@ Features Styles
 #features-mobile {
   overflow: hidden;
   position: relative;
-  min-height: 590px;
 }
 #features .lines,
 #features-mobile .lines {
@@ -872,6 +879,9 @@ Analyze Styles
 @media (max-width: 767px) {
   .analyze-wrapper h3 {
     padding-top: 0;
+  }
+  .analyze-wrapper h3 br {
+    display: none;
   }
 }
 @media (max-width: 767px) {

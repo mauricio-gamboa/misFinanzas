@@ -1,4 +1,4 @@
-<section id="small-features" class="site-padding" ng-controller="SecondaryFeaturesController as features" in-view="features.showThem($inview)">
+<section id="small-features" class="site-padding" ng-controller="SecondaryFeaturesController as features" in-view="features.showThem($inview)" in-view-options="{ offsetTop: 100 }">
   <div class="container">
     <div class="row">
 
@@ -10,8 +10,8 @@
 
       <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 fade-in" ng-repeat="feature in features.features">
         <div class="small-feature" ng-class="{'noMargin': $index == 4 || $index == 5}">
-          <div><img ng-src="{{feature.featured_image.source}}" alt=""/></div>
-          <h4>{{feature.title}}</h4>
+          <div><img ng-src="{{feature.featured_image.source}}" alt="{{feature.title}}" ng-cloak/></div>
+          <h4 ng-cloak>{{feature.title}}</h4>
         </div>
       </div>
     </div>

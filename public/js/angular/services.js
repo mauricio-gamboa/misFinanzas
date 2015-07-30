@@ -2,20 +2,16 @@
 
 services.factory('postsService', ['$rootScope', '$http', function ($rootScope, $http) {
   return {
-    getFeatures: function () {
+    getPosts: function (type) {
       return $http.get($rootScope.api, {
         params: {
-          'type': 'caracteristica_p'
+          'type': type
         }
       });
     },
 
-    getSecondaryFeatures: function () {
-      return $http.get($rootScope.api, {
-        params: {
-          'type': 'secondary_features'
-        }
-      });
+    getPost: function (id) {
+      return $http.get($rootScope.api + '/' + id);
     }
   };
 }]);

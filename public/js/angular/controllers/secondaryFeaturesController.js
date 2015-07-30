@@ -1,7 +1,6 @@
 'use strict';
 
-var SecondaryFeaturesController = function ($interval, postsService) {
-  this.interval = $interval;
+var SecondaryFeaturesController = function (postsService) {
   this.postsService = postsService;
 };
 
@@ -11,13 +10,13 @@ SecondaryFeaturesController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getSecondaryFeatures().success(function (data) {
+    _this.postsService.getPosts('secondary_features').success(function (data) {
       _this.features = data;
       _this.isShown = true;
     });
   }
 };
 
-SecondaryFeaturesController.$inject = ['$interval', 'postsService'];
+SecondaryFeaturesController.$inject = ['postsService'];
 
 controllers.controller('SecondaryFeaturesController', SecondaryFeaturesController);
