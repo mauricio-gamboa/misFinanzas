@@ -1,7 +1,6 @@
 'use strict';
 
-var FeaturesController = function ($interval, postsService) {
-  this.interval = $interval;
+var FeaturesController = function (postsService) {
   this.postsService = postsService;
 };
 
@@ -11,7 +10,7 @@ FeaturesController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getFeatures().success(function (data) {
+    _this.postsService.getPosts('caracteristica_p').success(function (data) {
       _this.features = data;
       _this.isShown = true;
       _this.dataLoaded = true;
@@ -19,6 +18,6 @@ FeaturesController.prototype.showThem = function (inView) {
   }
 };
 
-FeaturesController.$inject = ['$interval', 'postsService'];
+FeaturesController.$inject = ['postsService'];
 
 controllers.controller('FeaturesController', FeaturesController);
