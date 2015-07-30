@@ -2,14 +2,14 @@
 
   <?php if ( have_posts() ) : ?>
   <?php while ( have_posts() ) : the_post(); ?>
-  <div class="container" ng-controller="SectionContentController as section" ng-init="section.init(<?php the_id(); ?>)">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
         <div class="header-wrapper home">
           
           <div class="header-home-text">
-            <h1 ng-cloak>{{section.page.title}}</h1>
-            <div ng-bind-html="section.page.content" ng-cloak></div>
+            <?php the_title('<h1>', '</h1>'); ?>
+            <?php the_content(); ?>
 
             <div class="links clearfix hide-xs">
               
@@ -35,7 +35,8 @@
       <?php if ( has_post_thumbnail() ): ?>
       <div class="col-xs-12 col-sm-5 col-md-5 col-lg-6">
         <div class="header-wrapper home hand-wrapper">
-          <img ng-src="{{section.page.featured_image.source}}" alt="{{section.page.title}}" class="hand enter-element" ng-cloak />
+          <?php $default_attr = array('class' => "hand enter-element"); ?>
+          <?php the_post_thumbnail(array(424, 651), $default_attr); ?>
         </div>
       </div>
       <?php endif; ?>
