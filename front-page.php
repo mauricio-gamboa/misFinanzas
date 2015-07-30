@@ -6,7 +6,7 @@
 
 <?php get_template_part('template_parts/content', 'features-mobile'); ?>
 
-<?php get_template_part('template_parts/content', 'small-features'); ?>
+<?php get_template_part('template_parts/content', 'secondary-features'); ?>
 
 <?php get_template_part('template_parts/content', 'analyze'); ?>
 

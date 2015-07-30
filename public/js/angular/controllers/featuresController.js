@@ -3,6 +3,7 @@
 var FeaturesController = function ($interval, postsService) {
   this.interval = $interval;
   this.postsService = postsService;
+  this.isShown = false;
 };
 
 FeaturesController.prototype.showThem = function (inView) {

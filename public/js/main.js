@@ -24,49 +24,6 @@ angular.module('misFinanzas.directives', []);
 
 angular.module('misFinanzas.filters', []);;'use strict';
 
-controllers.controller('FeaturesSmallController', ['$scope', '$interval', function ($scope, $interval) {
-  $scope.isShown = false;
-
-  $scope.features = [];
-
-  $scope.original = [
-    {
-      title: 'Mis Transacciones',
-      image: 'public/images/small-feature-1.png'
-    },
-    {
-      title: 'Mi Calendario',
-      image: 'public/images/small-feature-2.png'
-    },
-    {
-      title: 'Mi Análisis',
-      image: 'public/images/small-feature-3.png'
-    },
-    {
-      title: 'Mi Flujo de Efectivo',
-      image: 'public/images/small-feature-4.png'
-    },
-    {
-      title: 'Mi Presupuesto',
-      image: 'public/images/small-feature-5.png'
-    },
-    {
-      title: 'Mis Metas de Ahorro',
-      image: 'public/images/small-feature-6.png'
-    }
-  ];
-
-  $scope.showThem = function (inview) {
-    if (inview && !$scope.isShown) {
-      $scope.isShown = true;
-
-      $interval(function (index) {
-        $scope.features.push($scope.original[index]);
-      }, 50, $scope.original.length);
-    }
-  };
-}]);;'use strict';
-
 controllers.controller('BudgetsController', ['$scope', '$interval', function ($scope, $interval) {
 
   $scope.isShowThem = false;
@@ -117,6 +74,7 @@ controllers.controller('BudgetsController', ['$scope', '$interval', function ($s
 var FeaturesController = function ($interval, postsService) {
   this.interval = $interval;
   this.postsService = postsService;
+  this.isShown = false;
 };
 
 FeaturesController.prototype.showThem = function (inView) {
@@ -238,6 +196,27 @@ controllers.controller('MainController', ['$scope', function ($scope) {
       $scope.isShowThem = true;
   };
 }]);;'use strict';
+
+var SecondaryFeaturesController = function ($interval, postsService) {
+  this.interval = $interval;
+  this.postsService = postsService;
+  this.isShown = false;
+};
+
+SecondaryFeaturesController.prototype.showThem = function (inView) {
+  var _this = this;
+
+  if (inView && !_this.isShown) {
+    _this.postsService.getSecondaryFeatures().success(function (data) {
+      _this.features = data;
+      _this.isShown = true;
+    });
+  }
+};
+
+SecondaryFeaturesController.$inject = ['$interval', 'postsService'];
+
+controllers.controller('SecondaryFeaturesController', SecondaryFeaturesController);;'use strict';
 
 angular.module('misFinanzas.directives', [])
 
@@ -387,6 +366,14 @@ services.factory('postsService', ['$rootScope', '$http', function ($rootScope, $
       return $http.get($rootScope.api, {
         params: {
           'type': 'caracteristica_p'
+        }
+      });
+    },
+
+    getSecondaryFeatures: function () {
+      return $http.get($rootScope.api, {
+        params: {
+          'type': 'secondary_features'
         }
       });
     }
