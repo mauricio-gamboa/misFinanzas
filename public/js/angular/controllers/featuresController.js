@@ -8,7 +8,9 @@ var FeaturesController = function ($interval, postsService) {
 FeaturesController.prototype.showThem = function (inView) {
   var _this = this;
 
-  if (inView && !_this.isShown) {
+  if (inView && !_this.isShown && !_this.isShownStarted) {
+    _this.isShownStarted = true;
+
     _this.postsService.getFeatures().success(function (data) {
       _this.features = data;
       _this.isShown = true;

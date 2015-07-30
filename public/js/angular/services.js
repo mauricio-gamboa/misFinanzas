@@ -8,6 +8,14 @@ services.factory('postsService', ['$rootScope', '$http', function ($rootScope, $
           'type': 'caracteristica_p'
         }
       });
+    },
+
+    getSecondaryFeatures: function () {
+      return $http.get($rootScope.api, {
+        params: {
+          'type': 'secondary_features'
+        }
+      });
     }
   };
 }]);
