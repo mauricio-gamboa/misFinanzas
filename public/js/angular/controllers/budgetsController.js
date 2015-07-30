@@ -4,14 +4,23 @@ controllers.controller('BudgetsController', ['$scope', '$interval', function ($s
 
   $scope.isShowThem = false;
 
-  $scope.transportationMax = 200;
-  $scope.transportationVal = 0;
-
-  $scope.marketMax = 300;
-  $scope.marketVal = 0;
-
-  $scope.restaurantsMax = 125;
-  $scope.restaurantsVal = 0;
+  $scope.budgets = [
+    {
+      title: 'Transporte',
+      max: 200,
+      val: 0
+    },
+    {
+      title: 'Supermercado',
+      max: 300,
+      val: 0
+    },
+    {
+      title: 'Restaurantes',
+      max: 125,
+      val: 0
+    }
+  ];
 
   $scope.getStyle = function (total, value, style) {
     return style + ': ' + (value * 100) / total + '%;';
@@ -20,9 +29,9 @@ controllers.controller('BudgetsController', ['$scope', '$interval', function ($s
   $scope.getClass = function (total, value) {
     var percentage = (value) / total;
 
-    if (percentage <= 0.25)
+    if (percentage <= 0.335)
       return 'green';
-    else if (percentage > 0.25 && percentage < 1)
+    else if (percentage > 0.335 && percentage < 1)
       return 'yellow';
     else
       return 'red';
@@ -32,17 +41,13 @@ controllers.controller('BudgetsController', ['$scope', '$interval', function ($s
     if (inview && !$scope.isShowThem) {
       $scope.isShowThem = true;
 
-      $interval(function () {
-        $scope.transportationVal = $scope.transportationVal + 1;
-      }, 100, ($scope.transportationMax * 0.25));
+      angular.forEach($scope.budgets, function (budget, index) {
+        var percentage = ((100 / $scope.budgets.length) * (index + 1)) / 100;
 
-      $interval(function () {
-        $scope.marketVal = $scope.marketVal + 1;
-      }, 4, ($scope.marketMax * 0.75));
-
-      $interval(function () {
-        $scope.restaurantsVal = $scope.restaurantsVal + 1;
-      }, 30, ($scope.restaurantsMax));
+        $interval(function () {
+          budget.val = budget.val + 1;
+        }, 4, (budget.max * percentage));
+      });
     }
   };
 }]);
