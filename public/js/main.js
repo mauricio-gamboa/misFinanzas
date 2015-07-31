@@ -24,8 +24,9 @@ angular.module('misFinanzas.directives', []);
 
 angular.module('misFinanzas.filters', []);;'use strict';
 
-var BudgetsController = function ($interval, postsService) {
+var BudgetsController = function ($interval, $filter, postsService) {
   this.interval = $interval;
+  this.filter = $filter;
   this.postsService = postsService;
 };
 
@@ -48,16 +49,16 @@ BudgetsController.prototype.startThem = function (budgets) {
   var _this = this;
 
   if (budgets && budgets.length) {
-    angular.forEach(budgets, function (budget, index) {
+    angular.forEach(budgets, function (budget) {
       budget.meta.valor_inicial = budget.meta.valor_inicial * 1;
 
       budget.meta.meta = budget.meta.meta * 1;
 
-      var percentage = ((100 / _this.budgets.length) * (index + 1)) / 100;
+      budget.meta.porcentaje = (budget.meta.porcentaje * 1) / 100;
 
       _this.interval(function () {
         budget.meta.valor_inicial = budget.meta.valor_inicial + 1;
-      }, 4, (budget.meta.meta * percentage));
+      }, 4, (budget.meta.meta * budget.meta.porcentaje));
     });
   }
 };
@@ -67,17 +68,21 @@ BudgetsController.prototype.getStyle = function (total, value, style) {
 };
 
 BudgetsController.prototype.getClass = function (total, value) {
+  var _this = this;
+
   var percentage = (value) / total;
 
-  if (percentage <= 0.335)
+  var oneThird = _this.filter('limitTo')((1 / 3), 4);
+
+  if (percentage <= oneThird)
     return 'green';
-  else if (percentage > 0.335 && percentage < 1)
+  else if (percentage > oneThird && percentage < 1)
     return 'yellow';
   else
     return 'red';
 };
 
-BudgetsController.$inject = ['$interval', 'postsService'];
+BudgetsController.$inject = ['$interval', '$filter', 'postsService'];
 
 controllers.controller('BudgetsController', BudgetsController);;'use strict';
 
