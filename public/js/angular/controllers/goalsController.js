@@ -1,71 +1,71 @@
 'use strict';
 
-controllers.controller('GoalsController', ['$scope', '$interval', function ($scope, $interval) {
+'use strict';
 
-  $scope.isShown = false;
+var GoalsController = function ($interval, postsService) {
+  this.interval = $interval;
+  this.postsService = postsService;
+};
 
-  $scope.vacationsMax = 500;
-  $scope.vacationsValue = 0;
+GoalsController.prototype.getClass = function (total, value) {
+  var percentage = (value * 100) / total;
 
-  $scope.universityMax = 400;
-  $scope.universityValue = 0;
+  if (percentage <= 25)
+    return 'red';
+  else if (percentage > 25 && percentage <= 50)
+    return 'orange';
+  else if (percentage > 50 && percentage < 100)
+    return 'yellow';
+  else
+    return 'green';
+};
 
-  $scope.concertMax = 300;
-  $scope.concertValue = 0;
+GoalsController.prototype.getColor = function (total, value) {
+  var percentage = (value * 100) / total;
 
-  $scope.carMax = 700;
-  $scope.carValue = 0;
+  if (percentage <= 25)
+    return '#ef512c';
+  else if (percentage > 25 && percentage <= 50)
+    return '#ff890a';
+  else if (percentage > 50 && percentage < 100)
+    return '#dbce00';
+  else
+    return '#8dc63f';
+};
 
-  $scope.getPercentage = function (total, value) {
-    return (value * 100) / total;
-  };
+GoalsController.prototype.showThem = function (inView) {
+  var _this = this;
 
-  $scope.getClass = function (total, value) {
-    var percentage = (value * 100) / total;
+  if (inView && !_this.isShown && !_this.isShownStarted) {
+    _this.isShownStarted = true;
 
-    if (percentage <= 25)
-      return 'red';
-    else if (percentage > 25 && percentage <= 50)
-      return 'orange';
-    else if (percentage > 50 && percentage < 100)
-      return 'yellow';
-    else
-      return 'green';
-  };
+    _this.postsService.getPosts('metas_financieras').success(function (data) {
+      _this.goals = data;
+      _this.isShown = true;
+      _this.dataLoaded = true;
+      _this.startThem(_this.goals);
+    });
+  }
+};
 
-  $scope.getColor = function (total, value) {
-    var percentage = (value * 100) / total;
+GoalsController.prototype.startThem = function (goals) {
+  var _this = this;
 
-    if (percentage <= 25)
-      return '#ef512c';
-    else if (percentage > 25 && percentage <= 50)
-      return '#ff890a';
-    else if (percentage > 50 && percentage < 100)
-      return '#dbce00';
-    else
-      return '#8dc63f';
-  };
+  if (goals && goals.length) {
+    angular.forEach(goals, function (goal) {
+      goal.meta.valor_inicial = goal.meta.valor_inicial * 1;
 
-  $scope.showThem = function (inview) {
-    if (inview && !$scope.isShown) {
-      $scope.isShown = true;
+      goal.meta.meta = goal.meta.meta * 1;
 
-      $interval(function () {
-        $scope.vacationsValue = $scope.vacationsValue + 1;
-      }, 4, ($scope.vacationsMax * 0.25));
+      goal.meta.porcentaje = (goal.meta.porcentaje * 1) / 100;
 
-      $interval(function () {
-        $scope.universityValue = $scope.universityValue + 1;
-      }, 4, ($scope.universityMax * 0.5));
+      _this.interval(function () {
+        goal.meta.valor_inicial = goal.meta.valor_inicial + 1;
+      }, 4, (goal.meta.meta * goal.meta.porcentaje));
+    });
+  }
+};
 
-      $interval(function () {
-        $scope.concertValue = $scope.concertValue + 1;
-      }, 4, ($scope.concertMax * 0.75));
+GoalsController.$inject = ['$interval', 'postsService'];
 
-      $interval(function () {
-        $scope.carValue = $scope.carValue + 1;
-      }, 4, ($scope.carMax));
-    }
-  };
-
-}]);
+controllers.controller('GoalsController', GoalsController);
