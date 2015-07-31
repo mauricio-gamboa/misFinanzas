@@ -24,57 +24,62 @@ angular.module('misFinanzas.directives', []);
 
 angular.module('misFinanzas.filters', []);;'use strict';
 
-controllers.controller('BudgetsController', ['$scope', '$interval', function ($scope, $interval) {
+var BudgetsController = function ($interval, postsService) {
+  this.interval = $interval;
+  this.postsService = postsService;
+};
 
-  $scope.isShowThem = false;
+BudgetsController.prototype.showThem = function (inView) {
+  var _this = this;
 
-  $scope.budgets = [
-    {
-      title: 'Transporte',
-      max: 200,
-      val: 0
-    },
-    {
-      title: 'Supermercado',
-      max: 300,
-      val: 0
-    },
-    {
-      title: 'Restaurantes',
-      max: 125,
-      val: 0
-    }
-  ];
+  if (inView && !_this.isShown && !_this.isShownStarted) {
+    _this.isShownStarted = true;
 
-  $scope.getStyle = function (total, value, style) {
-    return style + ': ' + (value * 100) / total + '%;';
-  };
+    _this.postsService.getPosts('presupuesto').success(function (data) {
+      _this.budgets = data;
+      _this.isShown = true;
+      _this.dataLoaded = true;
+      _this.startThem(_this.budgets);
+    });
+  }
+};
 
-  $scope.getClass = function (total, value) {
-    var percentage = (value) / total;
+BudgetsController.prototype.startThem = function (budgets) {
+  var _this = this;
 
-    if (percentage <= 0.335)
-      return 'green';
-    else if (percentage > 0.335 && percentage < 1)
-      return 'yellow';
-    else
-      return 'red';
-  };
+  if (budgets && budgets.length) {
+    angular.forEach(budgets, function (budget, index) {
+      budget.meta.valor_inicial = budget.meta.valor_inicial * 1;
 
-  $scope.showThem = function (inview) {
-    if (inview && !$scope.isShowThem) {
-      $scope.isShowThem = true;
+      budget.meta.meta = budget.meta.meta * 1;
 
-      angular.forEach($scope.budgets, function (budget, index) {
-        var percentage = ((100 / $scope.budgets.length) * (index + 1)) / 100;
+      var percentage = ((100 / _this.budgets.length) * (index + 1)) / 100;
 
-        $interval(function () {
-          budget.val = budget.val + 1;
-        }, 4, (budget.max * percentage));
-      });
-    }
-  };
-}]);;'use strict';
+      _this.interval(function () {
+        budget.meta.valor_inicial = budget.meta.valor_inicial + 1;
+      }, 4, (budget.meta.meta * percentage));
+    });
+  }
+};
+
+BudgetsController.prototype.getStyle = function (total, value, style) {
+  return style + ': ' + (value * 100) / total + '%;';
+};
+
+BudgetsController.prototype.getClass = function (total, value) {
+  var percentage = (value) / total;
+
+  if (percentage <= 0.335)
+    return 'green';
+  else if (percentage > 0.335 && percentage < 1)
+    return 'yellow';
+  else
+    return 'red';
+};
+
+BudgetsController.$inject = ['$interval', 'postsService'];
+
+controllers.controller('BudgetsController', BudgetsController);;'use strict';
 
 var FeaturesController = function (postsService) {
   this.postsService = postsService;

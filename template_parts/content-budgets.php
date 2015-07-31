@@ -1,4 +1,4 @@
-<section id="budgets" ng-controller="BudgetsController" in-view="showThem($inview)" in-view-options="{ offsetTop: 200 }">
+<section id="budgets" ng-controller="BudgetsController as budgets" in-view="budgets.showThem($inview)" in-view-options="{ offsetTop: 200 }">
   <div class="container">
     <div class="row">
       <?php if(ot_get_option('t_tulo_presupuestos') && ot_get_option('texto_presupuestos')): ?>
@@ -12,15 +12,15 @@
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-offset-1 col-lg-5">
         <div class="budgets-wrapper">
-          <div class="budget left fade-in" ng-repeat="budget in budgets">
-            <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/transporte-{{getClass(budget.max, budget.val)}}.png" alt=""/>
-            <h5>{{budget.title}} <span>Presupuesto: <strong>{{budget.max | currency:'$':0}}</strong></span></h5>
+          <div class="budget left fade-in" ng-repeat="budget in budgets.budgets">
+            <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/budget-{{budget.title | lowercase}}-{{budgets.getClass(budget.meta.meta, budget.meta.valor_inicial)}}.png" alt=""/>
+            <h5>{{budget.title}} <span>Presupuesto: <strong>{{budget.meta.meta | currency:'$':0}}</strong></span></h5>
 
             <div>
 
-              <div class="horizontal-slider" ng-class="getClass(budget.max, budget.val)">
-                <div style="{{getStyle(budget.max, budget.val, 'width')}}"></div>
-                <span style="{{getStyle(budget.max, budget.val, 'left')}}"><span>{{budget.val | currency:'$':0}}</span></span>
+              <div class="horizontal-slider" ng-class="budgets.getClass(budget.meta.meta, budget.meta.valor_inicial)">
+                <div style="{{budgets.getStyle(budget.meta.meta, budget.meta.valor_inicial, 'width')}}"></div>
+                <span style="{{budgets.getStyle(budget.meta.meta, budget.meta.valor_inicial, 'left')}}"><span>{{budget.meta.valor_inicial | currency:'$':0}}</span></span>
               </div>
             </div>
           </div>

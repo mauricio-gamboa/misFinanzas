@@ -1,23 +1,33 @@
-<section id="analyze" scroll-animate ng-controller="SectionContentController as section" ng-init="section.init('50')">
+<section id="analyze" scroll-animate>
   <div class="container">
     <div class="row">
+      
+      <?php if(ot_get_option('im_gen_an_lisis')): ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 hide-xs">
         <div class="analyze-wrapper">
-          <img class="phone" ng-src="{{section.page.featured_image.source}}" alt="{{section.page.title}}" ng-cloak/>
+          <img class="phone" src="<?php echo ot_get_option('im_gen_an_lisis'); ?>" alt=""/>
         </div>
       </div>
+      <?php endif; ?>
+
+      <?php if(ot_get_option('t_tulo_an_lisis') && ot_get_option('texto_an_lisis')): ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="analyze-wrapper auto">
-          <h3 class="site-title-left hide-xs" ng-bind-html="section.page.title" ng-cloak></h3>
-          <h3 class="site-title-centered show-xs" ng-bind-html="section.page.title" ng-cloak></h3>
-          <div ng-bind-html="section.page.content" ng-cloak></div>
+          <h3 class="site-title-left hide-xs"><?php echo ot_get_option('t_tulo_an_lisis'); ?></h3>
+          <h3 class="site-title-centered show-xs"><?php echo ot_get_option('t_tulo_an_lisis'); ?></h3>
+          <?php echo ot_get_option('texto_an_lisis'); ?>
         </div>
       </div>
+      <?php endif; ?>
+      
+      <?php if(ot_get_option('im_gen_an_lisis')): ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 show-xs">
         <div class="analyze-wrapper">
-          <img class="phone" ng-src="{{section.page.featured_image.source}}" alt="{{section.page.title}}" ng-cloak/>
+          <img class="phone" src="<?php echo ot_get_option('im_gen_an_lisis'); ?>" alt=""/>
         </div>
       </div>
+      <?php endif; ?>
+
     </div>
   </div>
 </section>
