@@ -1,67 +1,40 @@
-<section id="budgets" ng-controller="BudgetsController" in-view="showThem($inview)" in-view-options="{ offsetTop: 200 }">
+<section id="budgets" ng-controller="BudgetsController as budgets" in-view="budgets.showThem($inview)" in-view-options="{ offsetTop: 200 }">
   <div class="container">
     <div class="row">
+      <?php if(ot_get_option('t_tulo_presupuestos') && ot_get_option('texto_presupuestos')): ?>
       <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5 col-lg-offset-1 col-lg-5 show-xs">
         <div class="budgets-text">
-          <h3 class="site-title-centered">Define tus presupuestos</h3>
-
-          <p>Crea tus presupuestos de gastos por categoría. Mis Finanzas los monitorea para que siempre puedas saber
-            cómo vas con tus planes. Será sencillo tomar mejores decisiones financieras y cumplir tus metas de
-            gastos. </p>
+          <h3 class="site-title-centered"><?php echo ot_get_option('t_tulo_presupuestos'); ?></h3>
+          <p><?php echo ot_get_option('texto_presupuestos'); ?></p>
         </div>
       </div>
+      <?php endif; ?>
+      
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-offset-1 col-lg-5">
         <div class="budgets-wrapper">
-          <div class="budget left" ng-show="isShowThem">
-            <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/transporte-{{getClass(transportationMax, transportationVal)}}.png" alt=""/>
-            <h5>Transporte <span>Presupuesto: <strong>{{transportationMax | currency:'$':0}}</strong></span></h5>
+          <div class="budget left fade-in" ng-repeat="budget in budgets.budgets">
+            <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/budget-{{budget.title | lowercase}}-{{budgets.getClass(budget.meta.meta, budget.meta.valor_inicial)}}.png" alt=""/>
+            <h5>{{budget.title}} <span>Presupuesto: <strong>{{budget.meta.meta | currency:'$':0}}</strong></span></h5>
 
             <div>
 
-              <div class="horizontal-slider" ng-class="getClass(transportationMax, transportationVal)">
-                <div style="{{getStyle(transportationMax, transportationVal, 'width')}}"></div>
-                <span style="{{getStyle(transportationMax, transportationVal, 'left')}}"><span>{{transportationVal | currency:'$':0}}</span></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="budget left" ng-show="isShowThem">
-            <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/supermercado-{{getClass(marketMax, marketVal)}}.png" alt=""/>
-            <h5>supermercado <span>Presupuesto: <strong>{{marketMax | currency:'$':0}}</strong></span></h5>
-
-            <div>
-
-              <div class="horizontal-slider" ng-class="getClass(marketMax, marketVal)">
-                <div style="{{getStyle(marketMax, marketVal, 'width')}}"></div>
-                <span
-                  style="{{getStyle(marketMax, marketVal, 'left')}}"><span>{{marketVal | currency:'$':0}}</span></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="budget left" ng-show="isShowThem">
-            <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/restaurant-{{getClass(restaurantsMax, restaurantsVal)}}.png" alt=""/>
-            <h5>restaurantes <span>Presupuesto: <strong>{{restaurantsMax | currency:'$':0}}</strong></span></h5>
-
-            <div>
-
-              <div class="horizontal-slider" ng-class="getClass(restaurantsMax, restaurantsVal)">
-                <div style="{{getStyle(restaurantsMax, restaurantsVal, 'width')}}"></div>
-                <span style="{{getStyle(restaurantsMax, restaurantsVal, 'left')}}"><span>{{restaurantsVal | currency:'$':0}}</span></span>
+              <div class="horizontal-slider" ng-class="budgets.getClass(budget.meta.meta, budget.meta.valor_inicial)">
+                <div style="{{budgets.getStyle(budget.meta.meta, budget.meta.valor_inicial, 'width')}}"></div>
+                <span style="{{budgets.getStyle(budget.meta.meta, budget.meta.valor_inicial, 'left')}}"><span>{{budget.meta.valor_inicial | currency:'$':0}}</span></span>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <?php if(ot_get_option('t_tulo_presupuestos') && ot_get_option('texto_presupuestos')): ?>
       <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5 col-lg-offset-1 col-lg-5 hide-xs">
         <div class="budgets-text">
-          <h3 class="site-title-left">Define tus <br/>presupuestos</h3>
-
-          <p>Crea tus presupuestos de gastos por categoría. Mis Finanzas los monitorea para que siempre puedas saber
-            cómo vas con tus planes. Será sencillo tomar mejores decisiones financieras y cumplir tus metas de
-            gastos. </p>
+          <h3 class="site-title-left"><?php echo ot_get_option('t_tulo_presupuestos'); ?></h3>
+          <p><?php echo ot_get_option('texto_presupuestos'); ?></p>
         </div>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 </section>

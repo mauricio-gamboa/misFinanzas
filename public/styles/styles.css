@@ -1133,6 +1133,11 @@ Budget Styles
   padding-top: 200px;
 }
 @media (max-width: 767px) {
+  .budgets-text h3 br {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
   .budgets-text {
     text-align: center;
     padding-top: 0;
