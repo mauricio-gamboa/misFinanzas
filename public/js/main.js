@@ -328,6 +328,18 @@ angular.module('misFinanzas.directives', [])
     };
   }])
 
+  .directive('addIcon', [function () {
+    return {
+      restrict: 'A',
+
+      link: function (scope, element) {
+        var categories = element.hasClass('widget_categories');
+        var title = element.find('.widget-title');
+        if (categories) title.prepend('<span><i class="fa fa-tag"></i></span>');
+      }
+    };
+  }])
+
   .directive('scrollAnimate', ['deviceDetector', '$window', '$document', function (deviceDetector, $window, $document) {
     return {
       restrict: 'A',

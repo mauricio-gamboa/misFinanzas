@@ -18,6 +18,16 @@ Colors & Vars
 @gray-6: #acacac;
 @gray-7: #f3f3f3;
 @gray-8: #444444;
+@gray-9: #252525;
+@gray-10: #525252;
+@gray-11: #b3b3b3;
+@gray-12: #e7e7e7;
+@gray-13: #303030;
+@gray-14: #f5f5f5;
+@gray-15: #898989;
+@gray-16: #ebebeb;
+@gray-17: #c8c8c8;
+@gray-18: #e2e6e6;
 
 @red-1: #e60000;
 @red-2: #c70202;
@@ -482,6 +492,17 @@ Buttons & Links
       opacity: 1;
     }
   }
+
+  &.link-2 {
+    font-family: 'proxima_nova_semibold';
+    font-size: 14px;
+    color: @red-1;
+    text-transform: uppercase;
+
+    &:hover {
+      color: @red-2;
+    }
+  }
 }
 
 .link-store {
@@ -552,11 +573,7 @@ Nav Styles
     }
   }
 
-  #nav-mobile {
-    top: 88px;
-  }
-
-  #home-header {
+  .header {
     margin-top: 88px;
   }
 }
@@ -749,7 +766,10 @@ Home Header Styles
 }
 
 .header {
+  overflow: hidden;
   position: relative;
+  transition: margin-top 0.5s ease;
+  margin-top: 111px;
 
   .lines {
     position: absolute;
@@ -759,6 +779,28 @@ Home Header Styles
 
     @media @xs {
       margin-left: -2180px;
+    }
+  }
+
+  .pikes {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -470px;
+  }
+
+  &.general {
+    background: url("../images/bg-figures.jpg") repeat fixed 50% 0;
+    height: 74px;
+    line-height: 74px;
+
+    h1 {
+      font-family: 'ProximaNova-Light';
+      color: @gray-9;
+      margin: 0;
+      height: 74px;
+      line-height: 74px;
+      font-size: 37px;
     }
   }
 }
@@ -907,12 +949,9 @@ Home Header Styles
 
 #home-header {
   background: url("../images/bg-header-home.jpg") no-repeat fixed 50% 0 / cover;
-  overflow: hidden;
-  transition: margin-top 0.5s ease;
-  margin-top: 111px;
 
   @media @xs {
-    background: url("../images/bg-header-home.jpg") no-repeat 50% 0;
+    background: url("../images/bg-header-home.jpg") no-repeat 0 0;
   }
 
   .home-header-bottom {
@@ -1026,8 +1065,7 @@ Analyze Styles
 ***************************/
 
 #analyze {
-  background: url("../images/bg-figures.jpg") repeat scroll 50% 0;
-  background-attachment: fixed;
+  background: url("../images/bg-figures.jpg") repeat fixed 50% 0;
   .site-padding-top;
   overflow: hidden;
 }
@@ -1669,6 +1707,30 @@ Start Styles
 ****************************
 ***************************/
 
+.home {
+  #start {
+    .lines {
+      &.top {
+        &.home {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.blog {
+  #start {
+    .lines {
+      &.top {
+        &.blog {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 #start {
   background: url("../images/bg-start.jpg") no-repeat 50% 0 / cover;
   height: 618px;
@@ -1688,6 +1750,7 @@ Start Styles
 
     &.top {
       top: 0;
+      display: none;
     }
 
     &.bottom {
@@ -1957,5 +2020,312 @@ Animations
 
   &.ng-leave {
     animation: fadeOutUp 1500ms;
+  }
+}
+
+/***************************
+****************************
+Blog Main Styles
+****************************
+***************************/
+
+#content {
+  background: white url("../images/bg-content.png") no-repeat 930px 0;
+  min-height: 1529px;
+}
+
+.breadcrumbs {
+  font-family: 'proxima_nova_bold';
+  font-size: 12px;
+  text-transform: uppercase;
+  color: @gray-10;
+
+  a {
+    color: @green-1;
+  }
+
+  .bread-sep {
+    display: inline-block;
+    margin: 0 10px;
+    color: @gray-11;
+  }
+}
+
+#breadcrumbs {
+  height: 65px;
+  line-height: 65px;
+  .border-bottom(1px, @gray-12);
+}
+
+.content {
+  .site-padding;
+  background-color: white;
+}
+
+/***************************
+****************************
+Posts Styles
+****************************
+***************************/
+
+.article {
+  .border-bottom(1px, @gray-16);
+  padding-bottom: 30px;
+  margin-bottom: @site-padding;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-family: 'open_sansregular';
+    font-size: 20px;
+    color: @gray-13;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'proxima_nova_semibold';
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  .featured-image {
+    float: left;
+    width: 140px;
+    margin-right: 60px;
+
+    img {
+      border-radius: 100%;
+    }
+  }
+
+  .article-text {
+    float: left;
+    width: 550px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .meta {
+    .border-bottom(1px, @gray-14);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    line-height: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    > span {
+      color: @gray-15;
+      float: left;
+    }
+
+    > a {
+      font-family: 'open_sanssemibold';
+      color: @green-1;
+      float: right;
+    }
+  }
+}
+
+/***************************
+****************************
+Posts Pagination Styles
+****************************
+***************************/
+
+.my-pagination {
+  .border-top(1px, @gray-16);
+  text-align: center;
+  padding-top: @site-padding;
+  margin-top: 30px;
+
+  &:empty {
+    display: none;
+  }
+
+  .navigation {
+    margin: 0;
+
+    h2 {
+      display: none;
+    }
+
+    .nav-links {
+      text-align: center;
+
+      .page-numbers {
+        font-family: 'proxima_nova_regular';
+        border-radius: 4px;
+        color: @green-1;
+        .border(1px, @gray-17);
+        line-height: 32px;
+        padding: 0 15px;
+        display: inline-block;
+        margin: 0 5px;
+        font-size: 17px;
+
+        &.current {
+          color: white;
+          background-color: @green-1;
+
+          &:hover {
+            .border(1px, @gray-17);
+          }
+
+          i {
+            vertical-align: middle;
+          }
+        }
+
+        &.dots {
+          &:hover {
+            background: white;
+            color: @green-1;
+            .border(1px, @gray-17);
+          }
+        }
+
+        @media @small {
+          padding: 0 12px;
+        }
+
+        @media @xs {
+          padding: 0 5px;
+        }
+
+        &:hover {
+          color: white;
+          background-color: @green-1;
+        }
+      }
+    }
+  }
+}
+
+/***************************
+****************************
+Sidebar Styles
+****************************
+***************************/
+
+.sidebar {
+  padding: 20px 0;
+}
+
+.widget {
+  .border-bottom(1px, @gray-18);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  > * {
+    padding-left: 28px;
+  }
+
+  .widget-title {
+    font-family: 'proxima_nova_semibold';
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 27px;
+    .border-bottom(1px, @gray-18);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    > span {
+      color: @green-1;
+      font-size: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  &.widget_categories {
+
+    .widget-title {
+      margin-bottom: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+
+      li {
+
+        a {
+          line-height: 32px;
+          display: block;
+          padding: 10px 0 10px 28px;
+          margin: 0 0 0 -28px;
+
+          &:hover {
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.article-small {
+  padding-left: 28px;
+  margin-left: -28px;
+  .border-bottom(1px, @gray-18);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .meta {
+    font-family: 'open_sansregular';
+    margin-bottom: 15px;
+
+    img {
+      border-radius: 100%;
+      float: left;
+      margin-right: 20px;
+    }
+
+    h3 {
+      font-family: 'open_sansregular';
+      font-size: 16px;
+      line-height: 20px;
+      color: @gray-13;
+    }
+
+    span {
+      line-height: normal;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: @gray-15;
+    }
+  }
+
+  .article-text {
+    font-size: 14px;
+    line-height: 22px;
+
+    p {
+      margin: 0;
+    }
   }
 }
