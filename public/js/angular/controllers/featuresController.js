@@ -10,7 +10,7 @@ FeaturesController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('caracteristica_p').success(function (data) {
+    _this.postsService.getPosts('caracteristica_p', 4).success(function (data) {
       _this.features = data;
       _this.isShown = true;
       _this.dataLoaded = true;

@@ -12,7 +12,7 @@ BudgetsController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('presupuesto').success(function (data) {
+    _this.postsService.getPosts('presupuesto', 3).success(function (data) {
       _this.budgets = data;
       _this.isShown = true;
       _this.dataLoaded = true;
