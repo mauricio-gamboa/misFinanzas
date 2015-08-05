@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php get_template_part('template_parts/content', 'header-blog'); ?>
+<?php get_template_part('template_parts/content', 'header-archive'); ?>
 
 <?php get_template_part('template_parts/content', 'breadcrumbs'); ?>
 

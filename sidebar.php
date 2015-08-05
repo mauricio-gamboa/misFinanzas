@@ -34,7 +34,6 @@
       </div>
     </div>
   </div>
-  <?php if ( is_active_sidebar( 'sidebar-blog' ) ) : ?>
-    <?php dynamic_sidebar( 'sidebar-blog' ); ?>
-  <?php endif; ?>
+
+  <?php get_template_part('template_parts/content', 'widget-categories'); ?>
 </aside>
