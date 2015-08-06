@@ -48,6 +48,12 @@ Colors & Vars
 
 @orange-1: #ff890a;
 
+@twitter-background: #6dcff6;
+@twitter-background-hover: #5eb3d5;
+
+@facebook-background: #0b71bb;
+@facebook-background-hover: #0b62a2;
+
 /***************************
 ****************************
 Responsive
@@ -2304,6 +2310,32 @@ Sidebar Styles
       }
     }
   }
+
+  &.popular {
+    .social {
+      margin: 0;
+
+      li {
+        float: left;
+        .border-right(1px, @gray-18);
+        line-height: 42px;
+        padding: 0 25px;
+
+        .social-link {
+          margin-right: 10px;
+        }
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+          border-right: none;
+        }
+      }
+    }
+  }
 }
 
 .article-small {
@@ -2357,3 +2389,33 @@ Sidebar Styles
     }
   }
 }
+
+.social {
+  .social-link {
+    display: inline-block;
+    height: 42px;
+    width: 42px;
+    line-height: 42px;
+    text-align: center;
+    border-radius: 100%;
+    color: white;
+    font-size: 20px;
+
+    &.twitter {
+      background-color: @twitter-background;;
+
+      &:hover {
+        background-color: @twitter-background-hover;
+      }
+    }
+
+    &.facebook {
+      background-color: @facebook-background;
+
+      &:hover {
+        background-color: @facebook-background-hover;
+      }
+    }
+  }
+}
+

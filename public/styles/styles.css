@@ -1932,6 +1932,25 @@ Sidebar Styles
   right: 0;
   margin: auto;
 }
+.widget.popular .social {
+  margin: 0;
+}
+.widget.popular .social li {
+  float: left;
+  border-right: 1px solid #e2e6e6;
+  line-height: 42px;
+  padding: 0 25px;
+}
+.widget.popular .social li .social-link {
+  margin-right: 10px;
+}
+.widget.popular .social li:first-child {
+  padding-left: 0;
+}
+.widget.popular .social li:last-child {
+  padding-right: 0;
+  border-right: none;
+}
 .article-small {
   padding-left: 28px;
   margin-left: -28px;
@@ -1974,4 +1993,26 @@ Sidebar Styles
 }
 .article-small .article-text p {
   margin: 0;
+}
+.social .social-link {
+  display: inline-block;
+  height: 42px;
+  width: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 100%;
+  color: white;
+  font-size: 20px;
+}
+.social .social-link.twitter {
+  background-color: #6dcff6;
+}
+.social .social-link.twitter:hover {
+  background-color: #5eb3d5;
+}
+.social .social-link.facebook {
+  background-color: #0b71bb;
+}
+.social .social-link.facebook:hover {
+  background-color: #0b62a2;
 }
