@@ -289,13 +289,13 @@ body {
 }
 
 a {
-  color: @text-color;
-
-  &:hover,
+  &:link
   &:visited,
+  &:hover,
   &:active,
   &:focus {
     color: @text-color;
+    outline: none;
     text-decoration: none;
   }
 }
@@ -435,8 +435,9 @@ Buttons & Links
   border: none;
   padding: 0;
 
-  &:hover,
+  &:link
   &:visited,
+  &:hover,
   &:active,
   &:focus {
     color: white;
@@ -473,8 +474,9 @@ Buttons & Links
   border: none;
   padding: 0;
 
-  &:hover,
+  &:link
   &:visited,
+  &:hover,
   &:active,
   &:focus {
     color: white;
@@ -2332,6 +2334,10 @@ Sidebar Styles
       font-size: 16px;
       line-height: 20px;
       color: @gray-13;
+
+      a {
+        color: @gray-13;
+      }
     }
 
     span {

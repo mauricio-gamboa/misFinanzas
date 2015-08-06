@@ -192,14 +192,12 @@ body {
   line-height: 27px;
   color: #434648;
 }
-a {
-  color: #434648;
-}
+a:link a:visited,
 a:hover,
-a:visited,
 a:active,
 a:focus {
   color: #434648;
+  outline: none;
   text-decoration: none;
 }
 .logo {
@@ -311,8 +309,8 @@ Buttons & Links
   border: none;
   padding: 0;
 }
+.my-btn:link .my-btn:visited,
 .my-btn:hover,
-.my-btn:visited,
 .my-btn:active,
 .my-btn:focus {
   color: white;
@@ -341,8 +339,8 @@ Buttons & Links
   border: none;
   padding: 0;
 }
+.my-link:link .my-link:visited,
 .my-link:hover,
-.my-link:visited,
 .my-link:active,
 .my-link:focus {
   color: white;
@@ -1959,6 +1957,9 @@ Sidebar Styles
   font-family: 'open_sansregular';
   font-size: 16px;
   line-height: 20px;
+  color: #303030;
+}
+.article-small .meta h3 a {
   color: #303030;
 }
 .article-small .meta span {
