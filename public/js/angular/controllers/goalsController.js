@@ -39,7 +39,7 @@ GoalsController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('metas_financieras').success(function (data) {
+    _this.postsService.getPosts('metas_financieras', 4).success(function (data) {
       _this.goals = data;
       _this.isShown = true;
       _this.dataLoaded = true;

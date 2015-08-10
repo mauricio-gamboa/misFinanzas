@@ -1,5 +1,6 @@
 <section id="start">
-  <img src="<?php bloginfo('template_directory'); ?>/public/images/lines-start-top.png" alt="" class="lines top"/>
+  <img src="<?php bloginfo('template_directory'); ?>/public/images/lines-start-top.png" alt="" class="lines top home"/>
+  <img src="<?php bloginfo('template_directory'); ?>/public/images/lines-start-top-blog.png" alt="" class="lines top blog"/>
   <img src="<?php bloginfo('template_directory'); ?>/public/images/lines-start-bottom.png" alt="" class="lines bottom"/>
 
   <div class="container">

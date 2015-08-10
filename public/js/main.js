@@ -36,7 +36,7 @@ BudgetsController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('presupuesto').success(function (data) {
+    _this.postsService.getPosts('presupuesto', 3).success(function (data) {
       _this.budgets = data;
       _this.isShown = true;
       _this.dataLoaded = true;
@@ -96,7 +96,7 @@ FeaturesController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('caracteristica_p').success(function (data) {
+    _this.postsService.getPosts('caracteristica_p', 4).success(function (data) {
       _this.features = data;
       _this.isShown = true;
       _this.dataLoaded = true;
@@ -147,7 +147,7 @@ GoalsController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('metas_financieras').success(function (data) {
+    _this.postsService.getPosts('metas_financieras', 4).success(function (data) {
       _this.goals = data;
       _this.isShown = true;
       _this.dataLoaded = true;
@@ -197,7 +197,7 @@ SecondaryFeaturesController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('secondary_features').success(function (data) {
+    _this.postsService.getPosts('secondary_features', 6).success(function (data) {
       _this.features = data;
       _this.isShown = true;
     });
@@ -328,6 +328,18 @@ angular.module('misFinanzas.directives', [])
     };
   }])
 
+  .directive('addIcon', [function () {
+    return {
+      restrict: 'A',
+
+      link: function (scope, element) {
+        var categories = element.hasClass('widget_categories');
+        var title = element.find('.widget-title');
+        if (categories) title.prepend('<span><i class="fa fa-tag"></i></span>');
+      }
+    };
+  }])
+
   .directive('scrollAnimate', ['deviceDetector', '$window', '$document', function (deviceDetector, $window, $document) {
     return {
       restrict: 'A',
@@ -370,10 +382,13 @@ angular.module('misFinanzas.directives', [])
 
 services.factory('postsService', ['$rootScope', '$http', function ($rootScope, $http) {
   return {
-    getPosts: function (type) {
+    getPosts: function (type, posts_per_page) {
+      posts_per_page = posts_per_page || -1;
+
       return $http.get($rootScope.api, {
         params: {
-          'type': type
+          'type': type,
+          'filter[posts_per_page]': posts_per_page
         }
       });
     },

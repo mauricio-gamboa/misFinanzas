@@ -10,7 +10,7 @@ SecondaryFeaturesController.prototype.showThem = function (inView) {
   if (inView && !_this.isShown && !_this.isShownStarted) {
     _this.isShownStarted = true;
 
-    _this.postsService.getPosts('secondary_features').success(function (data) {
+    _this.postsService.getPosts('secondary_features', 6).success(function (data) {
       _this.features = data;
       _this.isShown = true;
     });

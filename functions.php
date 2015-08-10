@@ -40,3 +40,17 @@ if (!function_exists('misFinanzas_setup')) {
 }
 
 add_action('init', 'misFinanzas_setup');
+
+function sean_park_law_widgets_init() {
+  register_sidebar( array(
+    'name'          => 'Widget Area',
+    'id'            => 'sidebar-blog',
+    'description'   => 'Add widgets here to appear in your sidebar.',
+    'before_widget' => '<div id="%1$s" class="widget %2$s" add-icon>',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4 class="widget-title">',
+    'after_title'   => '</h4>'
+  ) );
+}
+
+add_action( 'widgets_init', 'sean_park_law_widgets_init' );
