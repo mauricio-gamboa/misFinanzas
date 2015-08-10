@@ -1,11 +1,28 @@
+<?php
+$category = get_the_category();
+$the_category_id = $category[0]->cat_ID;
+
+if(function_exists('rl_color')) {
+  $rl_category_color = rl_color($the_category_id);
+}
+?>
+
 <article class="article clearfix">
   <div class="featured-image">
     <?php if ( has_post_thumbnail() ): ?>
     <?php the_post_thumbnail( array(140, 140) ); ?>
+    
+    <?php if ($rl_category_color && function_exists('the_icon')): ?>
+      <span style="background-color: <?php echo $rl_category_color; ?>;"><?php the_icon('size=small'); ?></span>
+    <?php endif; ?>
+    
     <?php endif; ?>
   </div>
   <div class="article-text">
-    <!-- <h2>Vivamus sit amet</h2> -->
+    <?php if ($rl_category_color): ?>
+    <h2 style="color: <?php echo $rl_category_color; ?>;"><?php echo $category[0]->cat_name; ?></h2>
+    <?php endif; ?>
+    
     <?php the_title('<h1>', '</h1>'); ?>
     <div class="meta clearfix">
       <span><?php the_time('F j, Y'); ?></span>

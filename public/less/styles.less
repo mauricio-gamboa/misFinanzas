@@ -2105,9 +2105,26 @@ Posts Styles
     float: left;
     width: 140px;
     margin-right: 60px;
+    position: relative;
 
     img {
       border-radius: 100%;
+    }
+
+    > span {
+      display: block;
+      height: 49px;
+      width: 49px;
+      line-height: 49px;
+      text-align: center;
+      .round-border(100%);
+      position: absolute;
+      top: -11px;
+      right: -11px;
+
+      img {
+        vertical-align: middle;
+      }
     }
   }
 

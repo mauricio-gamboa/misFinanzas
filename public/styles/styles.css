@@ -1765,9 +1765,24 @@ Posts Styles
   float: left;
   width: 140px;
   margin-right: 60px;
+  position: relative;
 }
 .article .featured-image img {
   border-radius: 100%;
+}
+.article .featured-image > span {
+  display: block;
+  height: 49px;
+  width: 49px;
+  line-height: 49px;
+  text-align: center;
+  border-radius: 100%;
+  position: absolute;
+  top: -11px;
+  right: -11px;
+}
+.article .featured-image > span img {
+  vertical-align: middle;
 }
 .article .article-text {
   float: left;
