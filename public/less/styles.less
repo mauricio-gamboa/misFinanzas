@@ -2336,6 +2336,33 @@ Sidebar Styles
       }
     }
   }
+
+  &.mailchimp {
+
+    input[type="text"],
+    input[type="email"] {
+      height: 40px;
+      width: 276px;
+      border: none;
+      .round-border(4px);
+      background-color: white;
+      padding: 0 19px;
+      margin-right: 12px;
+    }
+
+    input[type="submit"] {
+      background: @red-1 url("../images/bg-check.png") no-repeat 50% 50%;
+      border: none;
+      .round-border(4px);
+      height: 40px;
+      line-height: 40px;
+      width: 40px;
+
+      &:hover {
+        background-color: @red-2;
+      }
+    }
+  }
 }
 
 .article-small {
