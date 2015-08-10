@@ -2037,11 +2037,6 @@ Blog Main Styles
 ****************************
 ***************************/
 
-#content {
-  background: white url("../images/bg-content.png") no-repeat 930px 0;
-  min-height: 1529px;
-}
-
 .breadcrumbs {
   font-family: 'proxima_nova_bold';
   font-size: 12px;
@@ -2107,7 +2102,11 @@ Posts Styles
     margin-right: 60px;
     position: relative;
 
-    img {
+    @media @medium {
+      margin-right: 15px;
+    }
+
+    > img {
       border-radius: 100%;
     }
 
@@ -2122,7 +2121,7 @@ Posts Styles
       top: -11px;
       right: -11px;
 
-      img {
+      > img {
         vertical-align: middle;
       }
     }
@@ -2131,6 +2130,11 @@ Posts Styles
   .article-text {
     float: left;
     width: 550px;
+    padding-top: 8px;
+
+    @media @medium {
+      width: 461px;
+    }
 
     p {
       margin: 0;
@@ -2238,9 +2242,28 @@ Posts Pagination Styles
 Sidebar Styles
 ****************************
 ***************************/
+#content {
+  overflow: hidden;
+}
 
 .sidebar {
   padding: 20px 0;
+  position: relative;
+  min-height: 1529px;
+
+  .bg-sidebar {
+    background: white url("../images/bg-content.png") repeat-x 0 0;
+    position: absolute;
+    width: 1700px;
+    top: 0;
+    left: 0;
+    min-height: 1529px;
+  }
+
+  > .widget {
+    position: relative;
+    z-index: 10;
+  }
 }
 
 .widget {
@@ -2338,6 +2361,10 @@ Sidebar Styles
         line-height: 42px;
         padding: 0 25px;
 
+        @media @medium {
+          padding: 0 22px;
+        }
+
         .social-link {
           margin-right: 10px;
         }
@@ -2365,6 +2392,10 @@ Sidebar Styles
       background-color: white;
       padding: 0 19px;
       margin-right: 12px;
+
+      @media @medium {
+        width: 209px;
+      }
     }
 
     input[type="submit"] {

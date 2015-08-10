@@ -1707,10 +1707,6 @@ Animations
 Blog Main Styles
 ****************************
 ***************************/
-#content {
-  background: white url("../images/bg-content.png") no-repeat 930px 0;
-  min-height: 1529px;
-}
 .breadcrumbs {
   font-family: 'proxima_nova_bold';
   font-size: 12px;
@@ -1767,7 +1763,12 @@ Posts Styles
   margin-right: 60px;
   position: relative;
 }
-.article .featured-image img {
+@media (min-width: 993px) and (max-width: 1200px) {
+  .article .featured-image {
+    margin-right: 15px;
+  }
+}
+.article .featured-image > img {
   border-radius: 100%;
 }
 .article .featured-image > span {
@@ -1781,12 +1782,18 @@ Posts Styles
   top: -11px;
   right: -11px;
 }
-.article .featured-image > span img {
+.article .featured-image > span > img {
   vertical-align: middle;
 }
 .article .article-text {
   float: left;
   width: 550px;
+  padding-top: 8px;
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .article .article-text {
+    width: 461px;
+  }
 }
 .article .article-text p {
   margin: 0;
@@ -1876,8 +1883,25 @@ Posts Pagination Styles
 Sidebar Styles
 ****************************
 ***************************/
+#content {
+  overflow: hidden;
+}
 .sidebar {
   padding: 20px 0;
+  position: relative;
+  min-height: 1529px;
+}
+.sidebar .bg-sidebar {
+  background: white url("../images/bg-content.png") repeat-x 0 0;
+  position: absolute;
+  width: 1700px;
+  top: 0;
+  left: 0;
+  min-height: 1529px;
+}
+.sidebar > .widget {
+  position: relative;
+  z-index: 10;
 }
 .widget {
   border-bottom: 1px solid #e2e6e6;
@@ -1956,6 +1980,11 @@ Sidebar Styles
   line-height: 42px;
   padding: 0 25px;
 }
+@media (min-width: 993px) and (max-width: 1200px) {
+  .widget.popular .social li {
+    padding: 0 22px;
+  }
+}
 .widget.popular .social li .social-link {
   margin-right: 10px;
 }
@@ -1975,6 +2004,12 @@ Sidebar Styles
   background-color: white;
   padding: 0 19px;
   margin-right: 12px;
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .widget.mailchimp input[type="text"],
+  .widget.mailchimp input[type="email"] {
+    width: 209px;
+  }
 }
 .widget.mailchimp input[type="submit"] {
   background: #e60000 url("../images/bg-check.png") no-repeat 50% 50%;
