@@ -799,8 +799,7 @@ Home Header Styles
 
   &.general {
     background: url("../images/bg-figures.jpg") repeat fixed 50% 0;
-    height: 74px;
-    line-height: 74px;
+    height: 102px;
 
     h1 {
       font-family: 'ProximaNova-Light';
@@ -2103,11 +2102,21 @@ Posts Styles
     position: relative;
 
     @media @medium {
-      margin-right: 15px;
+      margin-right: 25px;
+    }
+
+    @media @small {
+      width: 104px;
+      margin-right: 45px;
     }
 
     > img {
       border-radius: 100%;
+
+      @media @small {
+        height: 104px;
+        width: 104px;
+      }
     }
 
     > span {
@@ -2127,13 +2136,37 @@ Posts Styles
     }
   }
 
+  .post-info {
+    @media @small {
+      float: left;
+      min-height: 104px;
+      position: relative;
+      width: 321px;
+      padding-bottom: 30px;
+
+      .meta {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+
   .article-text {
     float: left;
     width: 550px;
     padding-top: 8px;
 
     @media @medium {
-      width: 461px;
+      width: 451px;
+    }
+
+    @media @small {
+      width: 100%;
+      float: none;
+      padding-top: 24px;
     }
 
     p {
@@ -2365,6 +2398,13 @@ Sidebar Styles
           padding: 0 22px;
         }
 
+        @media @small {
+          float: none;
+          border-right: none;
+          padding: 0;
+          margin-bottom: 19px;
+        }
+
         .social-link {
           margin-right: 10px;
         }
@@ -2376,6 +2416,10 @@ Sidebar Styles
         &:last-child {
           padding-right: 0;
           border-right: none;
+
+          @media @small {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -2396,6 +2440,11 @@ Sidebar Styles
       @media @medium {
         width: 209px;
       }
+
+      @media @small {
+        width: 100%;
+        margin: 0 0 10px 0;
+      }
     }
 
     input[type="submit"] {
@@ -2405,6 +2454,10 @@ Sidebar Styles
       height: 40px;
       line-height: 40px;
       width: 40px;
+
+      @media @small {
+        width: 100%;
+      }
 
       &:hover {
         background-color: @red-2;

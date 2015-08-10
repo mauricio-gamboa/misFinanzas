@@ -597,8 +597,7 @@ Home Header Styles
 }
 .header.general {
   background: url("../images/bg-figures.jpg") repeat fixed 50% 0;
-  height: 74px;
-  line-height: 74px;
+  height: 102px;
 }
 .header.general h1 {
   font-family: 'ProximaNova-Light';
@@ -1765,11 +1764,23 @@ Posts Styles
 }
 @media (min-width: 993px) and (max-width: 1200px) {
   .article .featured-image {
-    margin-right: 15px;
+    margin-right: 25px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .article .featured-image {
+    width: 104px;
+    margin-right: 45px;
   }
 }
 .article .featured-image > img {
   border-radius: 100%;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .article .featured-image > img {
+    height: 104px;
+    width: 104px;
+  }
 }
 .article .featured-image > span {
   display: block;
@@ -1785,6 +1796,22 @@ Posts Styles
 .article .featured-image > span > img {
   vertical-align: middle;
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .article .post-info {
+    float: left;
+    min-height: 104px;
+    position: relative;
+    width: 321px;
+    padding-bottom: 30px;
+  }
+  .article .post-info .meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+  }
+}
 .article .article-text {
   float: left;
   width: 550px;
@@ -1792,7 +1819,14 @@ Posts Styles
 }
 @media (min-width: 993px) and (max-width: 1200px) {
   .article .article-text {
-    width: 461px;
+    width: 451px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .article .article-text {
+    width: 100%;
+    float: none;
+    padding-top: 24px;
   }
 }
 .article .article-text p {
@@ -1985,6 +2019,14 @@ Sidebar Styles
     padding: 0 22px;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .widget.popular .social li {
+    float: none;
+    border-right: none;
+    padding: 0;
+    margin-bottom: 19px;
+  }
+}
 .widget.popular .social li .social-link {
   margin-right: 10px;
 }
@@ -1994,6 +2036,11 @@ Sidebar Styles
 .widget.popular .social li:last-child {
   padding-right: 0;
   border-right: none;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .widget.popular .social li:last-child {
+    margin-bottom: 0;
+  }
 }
 .widget.mailchimp input[type="text"],
 .widget.mailchimp input[type="email"] {
@@ -2011,6 +2058,13 @@ Sidebar Styles
     width: 209px;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .widget.mailchimp input[type="text"],
+  .widget.mailchimp input[type="email"] {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+}
 .widget.mailchimp input[type="submit"] {
   background: #e60000 url("../images/bg-check.png") no-repeat 50% 50%;
   border: none;
@@ -2018,6 +2072,11 @@ Sidebar Styles
   height: 40px;
   line-height: 40px;
   width: 40px;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .widget.mailchimp input[type="submit"] {
+    width: 100%;
+  }
 }
 .widget.mailchimp input[type="submit"]:hover {
   background-color: #c70202;

@@ -1,5 +1,6 @@
 <div id="mc_embed_signup" class="widget mailchimp">
-  <h4 class="widget-title"><span><i class="fa fa-envelope"></i></span> Suscribete a nuestro boletín</h4>
+  <h4 class="widget-title hide-s"><span><i class="fa fa-envelope"></i></span> Suscribete a nuestro boletín</h4>
+  <h4 class="widget-title show-s"><span><i class="fa fa-envelope"></i></span> Suscribete</h4>
   
   <form action="//github.us10.list-manage.com/subscribe/post?u=f39e3a220de9609346e75fd7c&amp;id=a472abdd28" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
