@@ -20,7 +20,7 @@
           <?php endif; ?>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 sidebar-wrapper">
         <?php get_sidebar(); ?>
       </div>
     </div>

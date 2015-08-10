@@ -808,6 +808,10 @@ Home Header Styles
       height: 74px;
       line-height: 74px;
       font-size: 37px;
+
+      @media @xs {
+        text-align: center;
+      }
     }
   }
 }
@@ -2105,7 +2109,7 @@ Posts Styles
       margin-right: 25px;
     }
 
-    @media @small {
+    @media @small, @xs {
       width: 104px;
       margin-right: 45px;
     }
@@ -2113,7 +2117,7 @@ Posts Styles
     > img {
       border-radius: 100%;
 
-      @media @small {
+      @media @small, @xs {
         height: 104px;
         width: 104px;
       }
@@ -2137,7 +2141,7 @@ Posts Styles
   }
 
   .post-info {
-    @media @small {
+    @media @small, @xs {
       float: left;
       min-height: 104px;
       position: relative;
@@ -2152,6 +2156,10 @@ Posts Styles
         margin: 0;
       }
     }
+
+    @media @xs {
+      width: 156px;
+    }
   }
 
   .article-text {
@@ -2163,7 +2171,7 @@ Posts Styles
       width: 451px;
     }
 
-    @media @small {
+    @media @small, @xs {
       width: 100%;
       float: none;
       padding-top: 24px;
@@ -2191,6 +2199,10 @@ Posts Styles
       font-family: 'open_sanssemibold';
       color: @green-1;
       float: right;
+
+      @media @xs {
+        display: none;
+      }
     }
   }
 }
@@ -2279,10 +2291,18 @@ Sidebar Styles
   overflow: hidden;
 }
 
+.sidebar-wrapper {
+  background: white url("../images/bg-content.png") repeat-x 0 100%;
+}
+
 .sidebar {
   padding: 20px 0;
   position: relative;
   min-height: 1529px;
+
+  @media @xs {
+    min-height: 0;
+  }
 
   .bg-sidebar {
     background: white url("../images/bg-content.png") repeat-x 0 0;
@@ -2291,6 +2311,10 @@ Sidebar Styles
     top: 0;
     left: 0;
     min-height: 1529px;
+
+    @media @xs {
+      display: none;
+    }
   }
 
   > .widget {
@@ -2312,6 +2336,10 @@ Sidebar Styles
 
   > * {
     padding-left: 28px;
+
+    @media @xs {
+      padding-left: 0;
+    }
   }
 
   .widget-title {
@@ -2428,6 +2456,16 @@ Sidebar Styles
   &.mailchimp {
 
     input[type="text"],
+    input[type="email"],
+    input[type="submit"] {
+      float: left;
+
+      @media @small, @xs {
+        float: none;
+      }
+    }
+
+    input[type="text"],
     input[type="email"] {
       height: 40px;
       width: 276px;
@@ -2441,7 +2479,7 @@ Sidebar Styles
         width: 209px;
       }
 
-      @media @small {
+      @media @small, @xs {
         width: 100%;
         margin: 0 0 10px 0;
       }
@@ -2455,7 +2493,7 @@ Sidebar Styles
       line-height: 40px;
       width: 40px;
 
-      @media @small {
+      @media @small, @xs {
         width: 100%;
       }
 

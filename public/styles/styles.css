@@ -607,6 +607,11 @@ Home Header Styles
   line-height: 74px;
   font-size: 37px;
 }
+@media (max-width: 767px) {
+  .header.general h1 {
+    text-align: center;
+  }
+}
 .header-wrapper {
   position: relative;
 }
@@ -1767,7 +1772,7 @@ Posts Styles
     margin-right: 25px;
   }
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
   .article .featured-image {
     width: 104px;
     margin-right: 45px;
@@ -1776,7 +1781,7 @@ Posts Styles
 .article .featured-image > img {
   border-radius: 100%;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
   .article .featured-image > img {
     height: 104px;
     width: 104px;
@@ -1796,7 +1801,7 @@ Posts Styles
 .article .featured-image > span > img {
   vertical-align: middle;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
   .article .post-info {
     float: left;
     min-height: 104px;
@@ -1812,6 +1817,11 @@ Posts Styles
     margin: 0;
   }
 }
+@media (max-width: 767px) {
+  .article .post-info {
+    width: 156px;
+  }
+}
 .article .article-text {
   float: left;
   width: 550px;
@@ -1822,7 +1832,7 @@ Posts Styles
     width: 451px;
   }
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
   .article .article-text {
     width: 100%;
     float: none;
@@ -1848,6 +1858,11 @@ Posts Styles
   font-family: 'open_sanssemibold';
   color: #8dc63f;
   float: right;
+}
+@media (max-width: 767px) {
+  .article .meta > a {
+    display: none;
+  }
 }
 /***************************
 ****************************
@@ -1920,10 +1935,18 @@ Sidebar Styles
 #content {
   overflow: hidden;
 }
+.sidebar-wrapper {
+  background: white url("../images/bg-content.png") repeat-x 0 100%;
+}
 .sidebar {
   padding: 20px 0;
   position: relative;
   min-height: 1529px;
+}
+@media (max-width: 767px) {
+  .sidebar {
+    min-height: 0;
+  }
 }
 .sidebar .bg-sidebar {
   background: white url("../images/bg-content.png") repeat-x 0 0;
@@ -1932,6 +1955,11 @@ Sidebar Styles
   top: 0;
   left: 0;
   min-height: 1529px;
+}
+@media (max-width: 767px) {
+  .sidebar .bg-sidebar {
+    display: none;
+  }
 }
 .sidebar > .widget {
   position: relative;
@@ -1949,6 +1977,11 @@ Sidebar Styles
 }
 .widget > * {
   padding-left: 28px;
+}
+@media (max-width: 767px) {
+  .widget > * {
+    padding-left: 0;
+  }
 }
 .widget .widget-title {
   font-family: 'proxima_nova_semibold';
@@ -2043,6 +2076,18 @@ Sidebar Styles
   }
 }
 .widget.mailchimp input[type="text"],
+.widget.mailchimp input[type="email"],
+.widget.mailchimp input[type="submit"] {
+  float: left;
+}
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
+  .widget.mailchimp input[type="text"],
+  .widget.mailchimp input[type="email"],
+  .widget.mailchimp input[type="submit"] {
+    float: none;
+  }
+}
+.widget.mailchimp input[type="text"],
 .widget.mailchimp input[type="email"] {
   height: 40px;
   width: 276px;
@@ -2058,7 +2103,7 @@ Sidebar Styles
     width: 209px;
   }
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
   .widget.mailchimp input[type="text"],
   .widget.mailchimp input[type="email"] {
     width: 100%;
@@ -2073,7 +2118,7 @@ Sidebar Styles
   line-height: 40px;
   width: 40px;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 992px), (max-width: 767px) {
   .widget.mailchimp input[type="submit"] {
     width: 100%;
   }

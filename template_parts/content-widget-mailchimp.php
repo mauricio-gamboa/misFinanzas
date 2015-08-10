@@ -5,7 +5,7 @@
   <form action="//github.us10.list-manage.com/subscribe/post?u=f39e3a220de9609346e75fd7c&amp;id=a472abdd28" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
 
-      <div class="mc-field-group">
+      <div class="mc-field-group clearfix">
         <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Enter your e-mail">
         <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button">
       </div>
