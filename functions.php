@@ -54,3 +54,44 @@ function sean_park_law_widgets_init() {
 }
 
 add_action( 'widgets_init', 'sean_park_law_widgets_init' );
+
+function mytheme_comment($comment, $args, $depth) {
+  $GLOBALS['comment'] = $comment;
+  extract($args, EXTR_SKIP);
+
+  if ( 'div' == $args['style'] ) {
+    $tag = 'div';
+    $add_below = 'comment';
+  } else {
+    $tag = 'li';
+    $add_below = 'div-comment';
+  }
+
+?>
+  <<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+  <?php if ( 'div' != $args['style'] ) : ?>
+  <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+  <?php endif; ?>
+  <h5><?php comment_author(); ?> <span><?php echo 'hace ' . human_time_diff( get_comment_time('U'), current_time('timestamp') ); ?></span></h5>
+  <?php if ( $comment->comment_approved == '0' ) : ?>
+    <p><em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em></p>
+    <br />
+  <?php endif; ?>
+
+  <?php comment_text(); ?>
+
+  <div class="reply">
+      <?php echo preg_replace( '/comment-reply-link/', 'comment-reply-link ' . 'my-link link-2', 
+      get_comment_reply_link(array_merge( $args, array(
+        'add_below' => $add_below, 
+        'reply_text' => 'Responder <i class="fa fa-chevron-right"></i>',
+        'depth' => $depth, 
+        'max_depth' => $args['max_depth']))), 1 );  
+        ?>
+  </div>
+  
+  <?php if ( 'div' != $args['style'] ) : ?>
+  </div>
+  <?php endif; ?>
+<?php
+}

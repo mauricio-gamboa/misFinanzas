@@ -8,6 +8,7 @@
         &thumbnail_width="67"
         &thumbnail_height="67"
         &excerpt_length="145"
+        &post_type="post"
         &post_html="
         <article class=\'article-small\'>
           <div class=\'meta clearfix\'>
