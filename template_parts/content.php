@@ -27,7 +27,7 @@ if(function_exists('rl_color')) {
       <?php the_title('<h1>', '</h1>'); ?>
       <div class="meta clearfix">
         <span><?php the_time('F j, Y'); ?></span>
-        <a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i> <?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></a>
+        <a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i> <?php comments_number( 'No Comentarios', '1 Comentario', '% Comentarios' ); ?></a>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ if(function_exists('rl_color')) {
       <?php the_title('<h1>', '</h1>'); ?>
       <div class="meta clearfix">
         <span><?php the_time('F j, Y'); ?></span>
-        <a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i> <?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></a>
+        <a href="<?php comments_link(); ?>"><i class="fa fa-comments"></i> <?php comments_number( 'No Comentarios', '1 Comentario', '% Comentarios' ); ?></a>
       </div>
     </div>
     <div class="text">
