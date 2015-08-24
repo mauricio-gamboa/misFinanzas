@@ -1589,6 +1589,7 @@ Footer Styles
   }
 }
 .footer-medium ul li a {
+  color: #3f4242;
   font-family: 'open_sanssemibold';
   font-size: 13px;
 }
@@ -2025,6 +2026,7 @@ Sidebar Styles
   margin: 0;
 }
 .widget.widget_categories ul li a {
+  color: #3f4242;
   line-height: 32px;
   display: block;
   padding: 10px 0 10px 70px;
@@ -2347,11 +2349,22 @@ Single Styles
   text-align: center;
   border-top: 1px solid #e3e6ea;
   border-bottom: 1px solid #e3e6ea;
-  padding: 25px 0 20px 0;
+  padding: 12px 0;
 }
 .addthis_toolbox a.at300b,
 .addthis_toolbox a.at300m {
-  display: inline-block;
-  float: none;
-  width: auto;
+  float: left;
+  width: 33.33% !important;
+  text-align: center;
+  padding: 0;
+  border-right: 1px solid #e3e6ea;
+  line-height: 58px;
+  height: 50px;
+  vertical-align: middle;
+}
+.addthis_toolbox a.at300b:last-child,
+.addthis_toolbox a.at300m:last-child,
+.addthis_toolbox a.at300b.addthis_button_google_plusone,
+.addthis_toolbox a.at300m.addthis_button_google_plusone {
+  border-right: 0;
 }

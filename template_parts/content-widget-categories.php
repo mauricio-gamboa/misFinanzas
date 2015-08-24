@@ -2,7 +2,7 @@
 
 <?php if($categories): ?>
 <div class="widget widget_categories" add-icon>
-  <h4 class="widget-title">Categories</h4>
+  <h4 class="widget-title">Categorías</h4>
   
   <ul class="list-unstyled">
 

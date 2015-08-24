@@ -32,6 +32,7 @@ Colors & Vars
 @gray-20: #959595;
 @gray-21: #f0f0f0;
 @gray-22: #e3e6ea;
+@gray-23: #3f4242;
 
 @red-1: #e60000;
 @red-2: #c70202;
@@ -1881,6 +1882,7 @@ Footer Styles
       }
 
       a {
+        color: @gray-23;
         font-family: 'open_sanssemibold';
         font-size: 13px;
 
@@ -2398,6 +2400,7 @@ Sidebar Styles
       li {
 
         a {
+          color: @gray-23;
           line-height: 32px;
           display: block;
           padding: 10px 0 10px 70px;
@@ -2761,12 +2764,22 @@ Single Styles
   text-align: center;
   .border-top(1px, @gray-22);
   .border-bottom(1px, @gray-22);
-  padding: 25px 0 20px 0;
+  padding: 12px 0;
 
   a.at300b,
   a.at300m {
-    display: inline-block;
-    float: none;
-    width: auto;
+    float: left;
+    width: 33.33% !important;
+    text-align: center;
+    padding: 0;
+    .border-right(1px, @gray-22);
+    line-height: 58px;
+    height: 50px;
+    vertical-align: middle;
+
+    &:last-child,
+    &.addthis_button_google_plusone {
+      border-right: 0;
+    }
   }
 }
