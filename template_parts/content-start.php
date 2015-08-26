@@ -10,17 +10,17 @@
         <h3><?php echo ot_get_option('texto_principal'); ?></h3>
         <?php endif; ?>
 
-        <?php if(ot_get_option('link_de_registro')): ?>
-        <div class="hide-xs">
-          <a href="<?php echo ot_get_option('link_de_registro'); ?>" class="my-btn btn-1" target="_blank">¡registrate Ahora!</a>
+        <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
+        <div>
+          <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank">Iniciar sesión</a>
         </div>
         <?php endif; ?>
 
-        <?php if(ot_get_option('link_descargar_app')): ?>
+<!--         <?php if(ot_get_option('link_descargar_app')): ?>
         <div class="show-xs">
           <a href="<?php echo ot_get_option('link_descargar_app'); ?>" class="my-btn btn-1" target="_blank">Descarga el App</a>
         </div>
-        <?php endif; ?>  
+        <?php endif; ?>   -->
 
         <p class="quotes-1"><span><span>¡Es gratis!</span></span></p>
       </div>

@@ -11,21 +11,21 @@
             <?php the_title('<h1>', '</h1>'); ?>
             <?php the_content(); ?>
 
-            <div class="links clearfix hide-xs">
+            <div class="links clearfix">
               
-              <?php if(ot_get_option('link_de_registro')): ?>
-              <a href="<?php echo ot_get_option('link_de_registro'); ?>" class="my-btn btn-1" target="_blank">registrate</a>
+              <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
+              <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank">Iniciar sesión</a>
               <?php endif; ?>
 
               <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
             </div>
 
-            <div class="links clearfix show-xs">
+<!--             <div class="links clearfix show-xs">
               <?php if(ot_get_option('link_descargar_app')): ?>
               <a href="<?php echo ot_get_option('link_descargar_app'); ?>" class="my-btn btn-1" target="_blank">Descarga el App</a>
               <?php endif; ?>
               <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
-            </div>
+            </div> -->
           </div>
           
 
