@@ -6,7 +6,7 @@
             <h1 class="logo small"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
           </div>
           <div class="footer-top clearfix">
-            <a href="https://www.123cuenta.com/contenido/" target="_blank" class="cuenta">visita <span>123 cuenta</span> y Aprende más sobre finanzas personales</a>
+            <a href="https://www.123cuenta.com/contenido/" target="_blank" class="cuenta" ga-cuenta>visita <span>123 cuenta</span> y Aprende más sobre finanzas personales</a>
 
             <h1 class="logo small hide-xs"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
           </div>
