@@ -21,5 +21,3 @@ var controllers = angular.module('misFinanzas.controllers', []);
 var services = angular.module('misFinanzas.services', []);
 
 angular.module('misFinanzas.directives', []);
-
-angular.module('misFinanzas.filters', []);

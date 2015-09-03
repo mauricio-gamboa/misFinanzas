@@ -12,10 +12,10 @@ animation="easeInOutQuart">
 </div>
 <div class="goal-meta">
   <div ng-hide="goals.getClass(goal.meta.meta, goal.meta.valor_inicial) == 'green'">
-    <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/ico-{{goal.title | lowercase}}.png" alt=""/>
+    <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/ico-{{goal.title | lowercase | accents}}.png" alt=""/>
   </div>
   <div ng-show="goals.getClass(goal.meta.meta, goal.meta.valor_inicial) == 'green'">
-    <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/ico-{{goal.title | lowercase}}-color.png" alt=""/>
+    <img ng-src="<?php bloginfo('template_directory'); ?>/public/images/ico-{{goal.title | lowercase | accents}}-color.png" alt=""/>
   </div>
   <span ng-hide="goals.getClass(goal.meta.meta, goal.meta.valor_inicial) == 'green'">{{goal.meta.valor_inicial | currency:'$':0}}</span>
   <img ng-show="goals.getClass(goal.meta.meta, goal.meta.valor_inicial) == 'green'" src="<?php bloginfo('template_directory'); ?>/public/images/check.png" alt=""/>
