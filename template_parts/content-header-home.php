@@ -11,7 +11,7 @@
             <?php the_title('<h1>', '</h1>'); ?>
             <?php the_content(); ?>
 
-            <div class="links clearfix">
+            <div class="links clearfix hide-xs">
               
               <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
               <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank">Iniciar sesión</a>
@@ -20,15 +20,28 @@
               <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
             </div>
 
-<!--             <div class="links clearfix show-xs">
-              <?php if(ot_get_option('link_descargar_app')): ?>
-              <a href="<?php echo ot_get_option('link_descargar_app'); ?>" class="my-btn btn-1" target="_blank">Descarga el App</a>
+            <div class="links clearfix show-xs no-mobile" device-detector>  
+              <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
+              <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank">Iniciar sesión</a>
+              <?php endif; ?>
+
+              <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
+            </div>
+
+            <div class="links clearfix show-xs ios" device-detector>
+              <?php if(ot_get_option('link_apple_store')): ?>
+              <a href="<?php echo ot_get_option('link_apple_store'); ?>" class="my-btn btn-1" target="_blank">Descarga el App</a>
               <?php endif; ?>
               <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
-            </div> -->
-          </div>
-          
+            </div>
 
+            <div class="links clearfix show-xs android" device-detector>
+              <?php if(ot_get_option('link_google_play')): ?>
+              <a href="<?php echo ot_get_option('link_google_play'); ?>" class="my-btn btn-1" target="_blank">Descarga el App</a>
+              <?php endif; ?>
+              <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
+            </div>
+          </div>
         </div>
       </div>
       

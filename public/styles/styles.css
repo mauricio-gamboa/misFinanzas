@@ -717,6 +717,16 @@ Home Header Styles
 @media (max-width: 767px) {
   .header-wrapper.home .links {
     margin-top: 20px;
+    display: none;
+  }
+  .header-wrapper.home .links.no-mobile.device-unknown {
+    display: block;
+  }
+  .header-wrapper.home .links.ios.device-iphone {
+    display: block;
+  }
+  .header-wrapper.home .links.android.device-android {
+    display: block;
   }
 }
 .header-wrapper.home .links > * {
@@ -1510,7 +1520,21 @@ Start Styles
     line-height: 39px;
   }
 }
-#start .btn-1 {
+@media (max-width: 767px) {
+  #start .cta-wrapper {
+    display: none;
+  }
+  #start .cta-wrapper.no-mobile.device-unknown {
+    display: block;
+  }
+  #start .cta-wrapper.ios.device-iphone {
+    display: block;
+  }
+  #start .cta-wrapper.android.device-android {
+    display: block;
+  }
+}
+#start .cta-wrapper .btn-1 {
   display: block;
   margin: 0 auto;
   width: 228px;
