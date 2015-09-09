@@ -152,4 +152,121 @@ angular.module('misFinanzas.directives', [])
         }
       }
     };
+  }])
+
+  .directive('gaIniciarBtn', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Iniciar Sesión');
+          ga('send', 'event', 'botón', 'clic', 'Iniciar Sesión', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaBlog', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Blog');
+          ga('send', 'event', 'tab', 'clic', 'Blog', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaIniciarCtaTop', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Iniciar Sesión');
+          ga('send', 'event', 'hero', 'clic', 'Iniciar Sesión', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaSolicitaUsuario', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Solicita tu usuario');
+          ga('send', 'event', 'botón', 'clic', 'Solicita tu usuario', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaSolicitaCuenta', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Solicita tu cuenta');
+          ga('send', 'event', 'botón', 'clic', 'Solicita tu cuenta', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaSolicitaTarjeta', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Solicita tu tarjeta');
+          ga('send', 'event', 'botón', 'clic', 'Solicita tu tarjeta', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaIniciarCtaBottom', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Iniciar Sesión');
+          ga('send', 'event', 'hero final', 'clic', 'Iniciar Sesión', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaCuenta', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('123Cuenta');
+          ga('send', 'event', 'banner', 'clic', '123Cuenta', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaPoliticas', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Políticas de Privacidad');
+          ga('send', 'event', 'botón', 'clic', 'Políticas de Privacidad', 1);
+        });
+      }
+    };
   }]);

@@ -20,9 +20,7 @@ var controllers = angular.module('misFinanzas.controllers', []);
 
 var services = angular.module('misFinanzas.services', []);
 
-angular.module('misFinanzas.directives', []);
-
-angular.module('misFinanzas.filters', []);;'use strict';
+angular.module('misFinanzas.directives', []);;'use strict';
 
 var BudgetsController = function ($interval, $filter, postsService) {
   this.interval = $interval;
@@ -378,7 +376,149 @@ angular.module('misFinanzas.directives', [])
         }
       }
     };
-  }]);;'use strict';;'use strict';
+  }])
+
+  .directive('gaIniciarBtn', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Iniciar Sesión');
+          ga('send', 'event', 'botón', 'clic', 'Iniciar Sesión', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaBlog', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Blog');
+          ga('send', 'event', 'tab', 'clic', 'Blog', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaIniciarCtaTop', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Iniciar Sesión');
+          ga('send', 'event', 'hero', 'clic', 'Iniciar Sesión', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaSolicitaUsuario', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Solicita tu usuario');
+          ga('send', 'event', 'botón', 'clic', 'Solicita tu usuario', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaSolicitaCuenta', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Solicita tu cuenta');
+          ga('send', 'event', 'botón', 'clic', 'Solicita tu cuenta', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaSolicitaTarjeta', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Solicita tu tarjeta');
+          ga('send', 'event', 'botón', 'clic', 'Solicita tu tarjeta', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaIniciarCtaBottom', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Iniciar Sesión');
+          ga('send', 'event', 'hero final', 'clic', 'Iniciar Sesión', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaCuenta', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('123Cuenta');
+          ga('send', 'event', 'banner', 'clic', '123Cuenta', 1);
+        });
+      }
+    };
+  }])
+
+  .directive('gaPoliticas', ['$log', function ($log) {
+    return {
+      restrict: 'AC',
+
+      link: function (scope, element) {
+        element.on('click', function () {
+          $log.log('Políticas de Privacidad');
+          ga('send', 'event', 'botón', 'clic', 'Políticas de Privacidad', 1);
+        });
+      }
+    };
+  }]);;'use strict';
+
+angular.module('misFinanzas.filters', []).filter('accents', removeAccents);
+
+function removeAccents() {
+  return function (source) {
+    var accent = [
+        /[\300-\306]/g, /[\340-\346]/g, // A, a
+        /[\310-\313]/g, /[\350-\353]/g, // E, e
+        /[\314-\317]/g, /[\354-\357]/g, // I, i
+        /[\322-\330]/g, /[\362-\370]/g, // O, o
+        /[\331-\334]/g, /[\371-\374]/g, // U, u
+        /[\321]/g, /[\361]/g, // N, n
+        /[\307]/g, /[\347]/g, // C, c
+      ],
+      noaccent = ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u', 'N', 'n', 'C', 'c'];
+
+    for (var i = 0; i < accent.length; i++) {
+      source = source.replace(accent[i], noaccent[i]);
+    }
+
+    source = source.replace(' ', '-');
+
+    return source;
+  };
+} // removeAccents;'use strict';
 
 services.factory('postsService', ['$rootScope', '$http', function ($rootScope, $http) {
   return {

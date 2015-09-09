@@ -1576,6 +1576,11 @@ Footer Styles
   float: right;
   margin: 0;
   font-size: 14px;
+  color: #3f4242;
+  display: block;
+}
+.footer-top .cuenta:hover {
+  color: #3f4242;
 }
 .footer-top .cuenta span {
   color: #e60000;
