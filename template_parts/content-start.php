@@ -12,13 +12,13 @@
 
         <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
         <div class="cta-wrapper hide-xs">
-          <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1 gaIniciarCtaBottom" target="_blank">Iniciar sesión</a>
+          <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank" ga-iniciar-cta-bottom>Iniciar sesión</a>
         </div>
         <?php endif; ?>
 
         <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
         <div class="cta-wrapper show-xs no-mobile" device-detector>
-          <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1 gaIniciarCtaBottom" target="_blank">Iniciar sesión</a>
+          <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank" ga-iniciar-cta-bottom>Iniciar sesión</a>
         </div>
         <?php endif; ?>
 

@@ -22,7 +22,7 @@
 
             <div class="links clearfix show-xs no-mobile" device-detector>  
               <?php if(ot_get_option('links_de_inicio_de_sesi_n')): ?>
-              <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank">Iniciar sesión</a>
+              <a href="<?php echo ot_get_option('links_de_inicio_de_sesi_n'); ?>" class="my-btn btn-1" target="_blank" ga-iniciar-cta-top>Iniciar sesión</a>
               <?php endif; ?>
 
               <p class="quotes-1 hide-xs"><span><span>¡Es gratis!</span></span></p>
